@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiz Lua/Luau - Testez vos connaissances en programmation Lua pour Roblox">
+    <title>Quiz - LuaMaster</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="courses.html" class="nav-link">Cours</a></li>
+                <li><a href="editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="quiz.html" class="nav-link active">Quiz</a></li>
+                <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <span class="page-badge"><i class="fas fa-trophy"></i> Testez vos connaissances</span>
+                <h1>Quiz <span class="gradient-text">Lua/Luau</span></h1>
+                <p>Repoussez vos limites : prouvez votre maîtrise, relevez les défis et débloquez votre plein potentiel
+                    de scripteur.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Selection -->
+    <section class="quiz-section" id="quiz-selection">
+        <div class="container">
+            <div class="quiz-grid">
+                <!-- Quiz 1 -->
+                <div class="quiz-card" data-quiz="basics">
+                    <div class="quiz-card-header beginner">
+                        <div class="quiz-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="quiz-level">Débutant</span>
+                    </div>
+                    <div class="quiz-card-body">
+                        <h3>Les Bases du Lua</h3>
+                        <p>Variables, types de données et opérateurs fondamentaux.</p>
+                        <div class="quiz-meta">
+                            <span><i class="fas fa-question-circle"></i> 10 questions</span>
+                            <span><i class="fas fa-clock"></i> ~5 min</span>
+                        </div>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <div class="quiz-score" id="score-basics">
+                            <i class="fas fa-medal"></i>
+                            <span>Non complété</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm start-quiz" data-quiz="basics">
+                            Commencer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz 2 -->
+                <div class="quiz-card" data-quiz="control">
+                    <div class="quiz-card-header intermediate">
+                        <div class="quiz-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <span class="quiz-level">Intermédiaire</span>
+                    </div>
+                    <div class="quiz-card-body">
+                        <h3>Conditions & Boucles</h3>
+                        <p>Structures de contrôle : if, else, for, while.</p>
+                        <div class="quiz-meta">
+                            <span><i class="fas fa-question-circle"></i> 10 questions</span>
+                            <span><i class="fas fa-clock"></i> ~7 min</span>
+                        </div>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <div class="quiz-score" id="score-control">
+                            <i class="fas fa-medal"></i>
+                            <span>Non complété</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm start-quiz" data-quiz="control">
+                            Commencer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz 3 -->
+                <div class="quiz-card" data-quiz="functions">
+                    <div class="quiz-card-header intermediate">
+                        <div class="quiz-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <span class="quiz-level">Intermédiaire</span>
+                    </div>
+                    <div class="quiz-card-body">
+                        <h3>Fonctions</h3>
+                        <p>Création, paramètres, retours et scope.</p>
+                        <div class="quiz-meta">
+                            <span><i class="fas fa-question-circle"></i> 10 questions</span>
+                            <span><i class="fas fa-clock"></i> ~7 min</span>
+                        </div>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <div class="quiz-score" id="score-functions">
+                            <i class="fas fa-medal"></i>
+                            <span>Non complété</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm start-quiz" data-quiz="functions">
+                            Commencer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz 4 -->
+                <div class="quiz-card" data-quiz="tables">
+                    <div class="quiz-card-header advanced">
+                        <div class="quiz-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <span class="quiz-level">Avancé</span>
+                    </div>
+                    <div class="quiz-card-body">
+                        <h3>Tables & Structures</h3>
+                        <p>Arrays, dictionnaires, ipairs et pairs.</p>
+                        <div class="quiz-meta">
+                            <span><i class="fas fa-question-circle"></i> 10 questions</span>
+                            <span><i class="fas fa-clock"></i> ~8 min</span>
+                        </div>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <div class="quiz-score" id="score-tables">
+                            <i class="fas fa-medal"></i>
+                            <span>Non complété</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm start-quiz" data-quiz="tables">
+                            Commencer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz 5 -->
+                <div class="quiz-card" data-quiz="roblox">
+                    <div class="quiz-card-header expert">
+                        <div class="quiz-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <span class="quiz-level">Expert</span>
+                    </div>
+                    <div class="quiz-card-body">
+                        <h3>API Roblox</h3>
+                        <p>Services, Instances, Events et RemoteEvents.</p>
+                        <div class="quiz-meta">
+                            <span><i class="fas fa-question-circle"></i> 15 questions</span>
+                            <span><i class="fas fa-clock"></i> ~12 min</span>
+                        </div>
+                    </div>
+                    <div class="quiz-card-footer">
+                        <div class="quiz-score" id="score-roblox">
+                            <i class="fas fa-medal"></i>
+                            <span>Non complété</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm start-quiz" data-quiz="roblox">
+                            Commencer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Modal -->
+    <div class="quiz-modal" id="quiz-modal">
+        <div class="quiz-modal-content">
+            <div class="quiz-modal-header">
+                <h2 id="quiz-title">Quiz</h2>
+                <div class="quiz-progress">
+                    <span id="quiz-progress-text">Question 1/10</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quiz-progress-bar"></div>
+                    </div>
+                </div>
+                <button class="modal-close" id="quiz-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="quiz-modal-body">
+                <div class="question-container" id="question-container">
+                    <h3 id="question-text">Question...</h3>
+                    <pre class="question-code" id="question-code"></pre>
+                    <div class="answers-grid" id="answers-container"></div>
+                </div>
+            </div>
+            <div class="quiz-modal-footer">
+                <button class="btn btn-secondary" id="btn-prev" disabled>
+                    <i class="fas fa-arrow-left"></i> Précédent
+                </button>
+                <button class="btn btn-primary" id="btn-next">
+                    Suivant <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="results-modal" id="results-modal">
+        <div class="results-content">
+            <div class="results-icon" id="results-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2 id="results-title">Félicitations !</h2>
+            <p id="results-message">Vous avez terminé le quiz.</p>
+            <div class="results-score">
+                <span class="score-value" id="results-score">8/10</span>
+                <span class="score-label">Score</span>
+            </div>
+            <div class="results-details" id="results-details"></div>
+            <div class="results-actions">
+                <button class="btn btn-secondary" id="btn-review">
+                    <i class="fas fa-eye"></i> Revoir les réponses
+                </button>
+                <button class="btn btn-primary" id="btn-close-results">
+                    <i class="fas fa-check"></i> Terminer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 LuaMaster. Fait avec <i class="fas fa-heart"></i> pour les futurs développeurs Roblox.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+
+</html>

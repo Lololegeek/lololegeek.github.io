@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leaderstats Roblox - Créez un système de score et statistiques pour vos joueurs">
+    <title>5.1 Leaderstats - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 5 : Projets Pratiques</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item active">
+                            <span class="lesson-num">5.1</span>
+                            <span>Leaderstats</span>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-2-click-detector.html">
+                                <span class="lesson-num">5.2</span>
+                                <span>ClickDetector</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-3-obby.html">
+                                <span class="lesson-num">5.3</span>
+                                <span>Obby Basique</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-4-shop.html">
+                                <span class="lesson-num">5.4</span>
+                                <span>Boutique</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-5-datastore.html">
+                                <span class="lesson-num">5.5</span>
+                                <span>DataStore</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-5">Module 5</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 5.1</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge project">Projet</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 20 minutes</span>
+                    </div>
+                    <h1>Leaderstats : Système de Score</h1>
+                    <p class="lesson-intro">Créez un système de statistiques qui s'affiche dans le leaderboard Roblox.
+                        Parfait pour les points, l'argent, les niveaux...</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-trophy"></i> Qu'est-ce que les Leaderstats ?</h2>
+                    <p>
+                        Les <strong>leaderstats</strong> sont un système intégré à Roblox qui affiche automatiquement
+                        les statistiques des joueurs dans le tableau de scores (appuyer sur TAB dans le jeu).
+                    </p>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="info-content">
+                            <h4>Le nom est important !</h4>
+                            <p>Le folder DOIT s'appeler exactement <code>"leaderstats"</code> (en minuscules) pour que
+                                Roblox le reconnaisse automatiquement.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-code"></i> Script Complet</h2>
+                    <p>Créez un <strong>Script</strong> dans <strong>ServerScriptService</strong> :</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>LeaderstatsScript.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">Players</span> = <span class="variable">game</span>:<span class="function">GetService</span>(<span class="string">"Players"</span>)
+
+<span class="keyword">local</span> <span class="keyword">function</span> <span class="function">onPlayerAdded</span>(<span class="variable">player</span>)
+    <span class="comment">-- Créer le folder leaderstats</span>
+    <span class="keyword">local</span> <span class="variable">leaderstats</span> = <span class="function">Instance.new</span>(<span class="string">"Folder"</span>)
+    <span class="variable">leaderstats</span>.<span class="variable">Name</span> = <span class="string">"leaderstats"</span>
+    <span class="variable">leaderstats</span>.<span class="variable">Parent</span> = <span class="variable">player</span>
+    
+    <span class="comment">-- Créer une stat "Coins"</span>
+    <span class="keyword">local</span> <span class="variable">coins</span> = <span class="function">Instance.new</span>(<span class="string">"IntValue"</span>)
+    <span class="variable">coins</span>.<span class="variable">Name</span> = <span class="string">"Coins"</span>
+    <span class="variable">coins</span>.<span class="variable">Value</span> = <span class="number">0</span>
+    <span class="variable">coins</span>.<span class="variable">Parent</span> = <span class="variable">leaderstats</span>
+    
+    <span class="comment">-- Créer une stat "Level"</span>
+    <span class="keyword">local</span> <span class="variable">level</span> = <span class="function">Instance.new</span>(<span class="string">"IntValue"</span>)
+    <span class="variable">level</span>.<span class="variable">Name</span> = <span class="string">"Level"</span>
+    <span class="variable">level</span>.<span class="variable">Value</span> = <span class="number">1</span>
+    <span class="variable">level</span>.<span class="variable">Parent</span> = <span class="variable">leaderstats</span>
+    
+    <span class="function">print</span>(<span class="variable">player</span>.<span class="variable">Name</span> .. <span class="string">" : leaderstats créés!"</span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- Connecter l'événement</span>
+<span class="variable">Players</span>.<span class="variable">PlayerAdded</span>:<span class="function">Connect</span>(<span class="variable">onPlayerAdded</span>)</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-edit"></i> Modifier les Stats</h2>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>modifier_stats.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="comment">-- Accéder aux stats d'un joueur</span>
+<span class="keyword">local</span> <span class="variable">player</span> = <span class="variable">game</span>.<span class="variable">Players</span>:<span class="function">FindFirstChild</span>(<span class="string">"NomDuJoueur"</span>)
+
+<span class="keyword">if</span> <span class="variable">player</span> <span class="keyword">then</span>
+    <span class="keyword">local</span> <span class="variable">leaderstats</span> = <span class="variable">player</span>:<span class="function">FindFirstChild</span>(<span class="string">"leaderstats"</span>)
+    
+    <span class="keyword">if</span> <span class="variable">leaderstats</span> <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="variable">coins</span> = <span class="variable">leaderstats</span>.<span class="variable">Coins</span>
+        
+        <span class="comment">-- Ajouter des coins</span>
+        <span class="variable">coins</span>.<span class="variable">Value</span> = <span class="variable">coins</span>.<span class="variable">Value</span> + <span class="number">10</span>
+        
+        <span class="comment">-- Enlever des coins</span>
+        <span class="variable">coins</span>.<span class="variable">Value</span> = <span class="variable">coins</span>.<span class="variable">Value</span> - <span class="number">5</span>
+        
+        <span class="comment">-- Définir une valeur exacte</span>
+        <span class="variable">coins</span>.<span class="variable">Value</span> = <span class="number">100</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-chart-line"></i> Types de Values</h2>
+
+                    <div class="cards-grid">
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-hashtag"></i></div>
+                            <h4>IntValue</h4>
+                            <p>Nombres entiers (0, 1, 100...)</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-percentage"></i></div>
+                            <h4>NumberValue</h4>
+                            <p>Nombres décimaux (1.5, 3.14...)</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-font"></i></div>
+                            <h4>StringValue</h4>
+                            <p>Texte ("VIP", "Noob"...)</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-toggle-on"></i></div>
+                            <h4>BoolValue</h4>
+                            <p>Vrai/Faux (true/false)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li>Créer un Folder nommé exactement <code>"leaderstats"</code></li>
+                            <li>Le parent doit être le Player</li>
+                            <li>Ajouter des IntValue/StringValue dans le folder</li>
+                            <li>Le nom de la Value = nom affiché dans le leaderboard</li>
+                            <li>Modifier avec <code>.Value</code></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="4-3-events.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 4.3 Les Events</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="5-2-click-detector.html">
+                            <span>Leçon suivante</span>
+                            <strong>5.2 ClickDetector <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="5-1">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

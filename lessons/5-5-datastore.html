@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DataStore Roblox - Sauvegarder les données des joueurs">
+    <title>5.5 DataStore - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 5 : Projets Pratiques</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="5-1-leaderstats.html">
+                                <span class="lesson-num">5.1</span>
+                                <span>Leaderstats</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-2-click-detector.html">
+                                <span class="lesson-num">5.2</span>
+                                <span>ClickDetector</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-3-obby.html">
+                                <span class="lesson-num">5.3</span>
+                                <span>Obby Basique</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-4-shop.html">
+                                <span class="lesson-num">5.4</span>
+                                <span>Boutique</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item active">
+                            <span class="lesson-num">5.5</span>
+                            <span>DataStore</span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-5">Module 5</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 5.5</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge advanced">Avancé</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 30 minutes</span>
+                    </div>
+                    <h1>DataStore : Sauvegardes</h1>
+                    <p class="lesson-intro">Le sujet le plus important : sauvegarder la progression des joueurs pour
+                        qu'ils ne perdent pas leurs niveaux quand ils quittent le jeu.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-database"></i> Activer les Services API</h2>
+                    <p>
+                        Avant de coder, vous devez activer l'accès aux DataStores dans Roblox Studio :
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-cog"></i> Allez dans <strong>Game Settings</strong> (onglet Home)</li>
+                        <li><i class="fas fa-shield-alt"></i> Allez dans l'onglet <strong>Security</strong></li>
+                        <li><i class="fas fa-check"></i> Activez <strong>"Enable Studio Access to API Services"</strong>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-save"></i> Script de Sauvegarde Complet</h2>
+                    <p>Ce script gère le chargement à la connexion et la sauvegarde à la déconnexion.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>datastore_system.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">Players</span> = <span class="variable">game</span>:<span class="function">GetService</span>(<span class="string">"Players"</span>)
+<span class="keyword">local</span> <span class="variable">DataStoreService</span> = <span class="variable">game</span>:<span class="function">GetService</span>(<span class="string">"DataStoreService"</span>)
+
+<span class="comment">-- Créer ou récupérer le DataStore "PlayerData"</span>
+<span class="keyword">local</span> <span class="variable">myStore</span> = <span class="variable">DataStoreService</span>:<span class="function">GetDataStore</span>(<span class="string">"PlayerData_v1"</span>)
+
+<span class="comment">-- 1. CHARGEMENT DES DONNÉES</span>
+<span class="variable">Players</span>.<span class="variable">PlayerAdded</span>:<span class="function">Connect</span>(<span class="keyword">function</span>(<span class="variable">player</span>)
+    <span class="comment">-- Créer les leaderstats (voir leçon 5.1)</span>
+    <span class="keyword">local</span> <span class="variable">leaderstats</span> = <span class="function">Instance.new</span>(<span class="string">"Folder"</span>)
+    <span class="variable">leaderstats</span>.<span class="variable">Name</span> = <span class="string">"leaderstats"</span>
+    <span class="variable">leaderstats</span>.<span class="variable">Parent</span> = <span class="variable">player</span>
+    
+    <span class="keyword">local</span> <span class="variable">coins</span> = <span class="function">Instance.new</span>(<span class="string">"IntValue"</span>)
+    <span class="variable">coins</span>.<span class="variable">Name</span> = <span class="string">"Coins"</span>
+    <span class="variable">coins</span>.<span class="variable">Parent</span> = <span class="variable">leaderstats</span>
+    
+    <span class="comment">-- Clé unique pour le joueur (ex: "Player_12345")</span>
+    <span class="keyword">local</span> <span class="variable">key</span> = <span class="string">"Player_"</span> .. <span class="variable">player</span>.<span class="variable">UserId</span>
+    
+    <span class="comment">-- Essayer de charger les données</span>
+    <span class="keyword">local</span> <span class="variable">success</span>, <span class="variable">data</span> = <span class="function">pcall</span>(<span class="keyword">function</span>()
+        <span class="keyword">return</span> <span class="variable">myStore</span>:<span class="function">GetAsync</span>(<span class="variable">key</span>)
+    <span class="keyword">end</span>)
+    
+    <span class="keyword">if</span> <span class="variable">success</span> <span class="keyword">then</span>
+        <span class="comment">-- Si data existe, on l'utilise, sinon 0</span>
+        <span class="variable">coins</span>.<span class="variable">Value</span> = <span class="variable">data</span> <span class="keyword">or</span> <span class="number">0</span>
+        <span class="function">print</span>(<span class="string">"Données chargées pour "</span> .. <span class="variable">player</span>.<span class="variable">Name</span>)
+    <span class="keyword">else</span>
+        <span class="function">warn</span>(<span class="string">"Erreur de chargement !"</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>)
+
+<span class="comment">-- 2. SAUVEGARDE DES DONNÉES</span>
+<span class="keyword">local</span> <span class="keyword">function</span> <span class="function">saveData</span>(<span class="variable">player</span>)
+    <span class="keyword">local</span> <span class="variable">leaderstats</span> = <span class="variable">player</span>:<span class="function">FindFirstChild</span>(<span class="string">"leaderstats"</span>)
+    <span class="keyword">if</span> <span class="variable">leaderstats</span> <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="variable">key</span> = <span class="string">"Player_"</span> .. <span class="variable">player</span>.<span class="variable">UserId</span>
+        <span class="keyword">local</span> <span class="variable">coinsToSave</span> = <span class="variable">leaderstats</span>.<span class="variable">Coins</span>.<span class="variable">Value</span>
+        
+        <span class="comment">-- Essayer de sauvegarder</span>
+        <span class="keyword">local</span> <span class="variable">success</span>, <span class="variable">errorMsg</span> = <span class="function">pcall</span>(<span class="keyword">function</span>()
+            <span class="variable">myStore</span>:<span class="function">SetAsync</span>(<span class="variable">key</span>, <span class="variable">coinsToSave</span>)
+        <span class="keyword">end</span>)
+        
+        <span class="keyword">if</span> <span class="variable">success</span> <span class="keyword">then</span>
+            <span class="function">print</span>(<span class="string">"Données sauvegardées !"</span>)
+        <span class="keyword">else</span>
+            <span class="function">warn</span>(<span class="string">"Erreur de sauvegarde: "</span> .. <span class="variable">errorMsg</span>)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">-- Sauvegarder quand un joueur part</span>
+<span class="variable">Players</span>.<span class="variable">PlayerRemoving</span>:<span class="function">Connect</span>(<span class="variable">saveData</span>)
+
+<span class="comment">-- Sauvegarder TOUT LE MONDE quand le serveur ferme (Important !)</span>
+<span class="variable">game</span>:<span class="function">BindToClose</span>(<span class="keyword">function</span>()
+    <span class="keyword">for</span> <span class="variable">_</span>, <span class="variable">player</span> <span class="keyword">in</span> <span class="function">ipairs</span>(<span class="variable">Players</span>:<span class="function">GetPlayers</span>()) <span class="keyword">do</span>
+        <span class="function">saveData</span>(<span class="variable">player</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>)</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="info-content">
+                            <h4>pcall (Protected Call)</h4>
+                            <p>Les appels au DataStore peuvent échouer (problème internet, serveur Roblox...).
+                                <code>pcall</code> permet d'attraper l'erreur sans faire planter tout le script.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li>Activer "Enable Studio Access to API Services"</li>
+                            <li>Utiliser <code>DataStoreService:GetDataStore("Nom")</code></li>
+                            <li><code>GetAsync(key)</code> pour charger</li>
+                            <li><code>SetAsync(key, value)</code> pour sauvegarder</li>
+                            <li>Toujours utiliser <code>pcall</code> pour gérer les erreurs</li>
+                            <li>Utiliser <code>BindToClose</code> pour sauvegarder à la fermeture du serveur</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="5-4-shop.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 5.4 Boutique</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="../roadmap.html">
+                            <span>Prochaine étape</span>
+                            <strong>Roadmap Personnalisée <i class="fas fa-trophy"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="5-5">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

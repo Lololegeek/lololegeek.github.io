@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cours de Lua/Luau pour Roblox Studio - Formation complète du débutant à l'expert">
+    <title>Cours Lua/Luau - LuaMaster</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/courses.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <span class="page-badge"><i class="fas fa-graduation-cap"></i> Formation Lua/Luau</span>
+                <h1>Cours & <span class="gradient-text">Tutoriels</span></h1>
+                <p>Apprenez le Lua/Luau étape par étape avec notre formation structurée pour Roblox Studio</p>
+            </div>
+            <div class="progress-overview">
+                <div class="progress-card">
+                    <div class="progress-circle" data-progress="0">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" />
+                            <circle cx="50" cy="50" r="45" class="progress-ring" />
+                        </svg>
+                        <span class="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-info">
+                        <h4>Progression Globale</h4>
+                        <p><span id="completed-lessons">0</span>/50 leçons complétées</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Modules -->
+    <section class="courses-section">
+        <div class="container">
+            <!-- Module 1: Fondamentaux -->
+            <div class="course-module" id="module-1">
+                <div class="module-header">
+                    <div class="module-icon beginner">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="module-info">
+                        <span class="module-level beginner">Débutant</span>
+                        <h2>Module 1 : Fondamentaux du Lua</h2>
+                        <p>Découvrez les bases du langage Lua : variables, types, opérateurs et premiers programmes.</p>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-stats">
+                            <span><i class="fas fa-book"></i> 12 leçons</span>
+                            <span><i class="fas fa-clock"></i> ~2h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lessons-grid">
+                    <a href="lessons/1-1-introduction.html" class="lesson-card" data-lesson="1-1">
+                        <span class="lesson-number">1.1</span>
+                        <h3>Introduction au Lua</h3>
+                        <p>Qu'est-ce que Lua ? Histoire et utilisation dans Roblox</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 10 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/1-2-premier-script.html" class="lesson-card" data-lesson="1-2">
+                        <span class="lesson-number">1.2</span>
+                        <h3>Premier Script</h3>
+                        <p>Votre premier print() et l'Output de Roblox Studio</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 15 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/1-3-variables.html" class="lesson-card" data-lesson="1-3">
+                        <span class="lesson-number">1.3</span>
+                        <h3>Les Variables</h3>
+                        <p>Stocker et manipuler des données avec local et global</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/1-4-types.html" class="lesson-card" data-lesson="1-4">
+                        <span class="lesson-number">1.4</span>
+                        <h3>Types de Données</h3>
+                        <p>Strings, numbers, booleans et nil expliqués</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 25 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/1-5-operateurs.html" class="lesson-card" data-lesson="1-5">
+                        <span class="lesson-number">1.5</span>
+                        <h3>Opérateurs</h3>
+                        <p>Arithmétiques, comparaison et logiques</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/1-6-conditions.html" class="lesson-card" data-lesson="1-6">
+                        <span class="lesson-number">1.6</span>
+                        <h3>Conditions (if/else)</h3>
+                        <p>Prendre des décisions dans votre code</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 25 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Module 2: Contrôle de Flux -->
+            <div class="course-module" id="module-2">
+                <div class="module-header">
+                    <div class="module-icon intermediate">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="module-info">
+                        <span class="module-level intermediate">Intermédiaire</span>
+                        <h2>Module 2 : Boucles & Fonctions</h2>
+                        <p>Maîtrisez les boucles, les fonctions et les structures de contrôle avancées.</p>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-stats">
+                            <span><i class="fas fa-book"></i> 10 leçons</span>
+                            <span><i class="fas fa-clock"></i> ~2.5h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lessons-grid">
+                    <a href="lessons/2-1-while.html" class="lesson-card" data-lesson="2-1">
+                        <span class="lesson-number">2.1</span>
+                        <h3>Boucle while</h3>
+                        <p>Répéter tant qu'une condition est vraie</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/2-2-for.html" class="lesson-card" data-lesson="2-2">
+                        <span class="lesson-number">2.2</span>
+                        <h3>Boucle for</h3>
+                        <p>Itérer un nombre précis de fois</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 25 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/2-3-fonctions.html" class="lesson-card" data-lesson="2-3">
+                        <span class="lesson-number">2.3</span>
+                        <h3>Les Fonctions</h3>
+                        <p>Créer et appeler des fonctions réutilisables</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 30 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/2-4-parametres.html" class="lesson-card" data-lesson="2-4">
+                        <span class="lesson-number">2.4</span>
+                        <h3>Paramètres & Retours</h3>
+                        <p>Passer des données aux fonctions et récupérer des résultats</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 25 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/2-5-scope.html" class="lesson-card" data-lesson="2-5">
+                        <span class="lesson-number">2.5</span>
+                        <h3>Scope & Closures</h3>
+                        <p>Comprendre la portée des variables</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Module 3: Tables -->
+            <div class="course-module" id="module-3">
+                <div class="module-header">
+                    <div class="module-icon intermediate">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="module-info">
+                        <span class="module-level intermediate">Intermédiaire</span>
+                        <h2>Module 3 : Tables & Structures</h2>
+                        <p>Apprenez à organiser vos données avec les tables, arrays et dictionnaires.</p>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-stats">
+                            <span><i class="fas fa-book"></i> 8 leçons</span>
+                            <span><i class="fas fa-clock"></i> ~2h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lessons-grid">
+                    <a href="lessons/3-1-tables-intro.html" class="lesson-card" data-lesson="3-1">
+                        <span class="lesson-number">3.1</span>
+                        <h3>Introduction aux Tables</h3>
+                        <p>La structure de données la plus importante en Lua</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/3-2-dictionnaires.html" class="lesson-card" data-lesson="3-2">
+                        <span class="lesson-number">3.2</span>
+                        <h3>Dictionnaires</h3>
+                        <p>Paires clé-valeur pour organiser les données</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 25 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/3-3-iteration.html" class="lesson-card" data-lesson="3-3">
+                        <span class="lesson-number">3.3</span>
+                        <h3>Itération (pairs/ipairs)</h3>
+                        <p>Parcourir les tables efficacement</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Module 4: Roblox API -->
+            <div class="course-module" id="module-4">
+                <div class="module-header">
+                    <div class="module-icon advanced">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="module-info">
+                        <span class="module-level advanced">Avancé</span>
+                        <h2>Module 4 : API Roblox</h2>
+                        <p>Plongez dans l'API Roblox : Instances, Services et Events.</p>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-stats">
+                            <span><i class="fas fa-book"></i> 3 leçons</span>
+                            <span><i class="fas fa-clock"></i> ~1.5h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lessons-grid">
+                    <a href="lessons/4-1-instances.html" class="lesson-card" data-lesson="4-1">
+                        <span class="lesson-number">4.1</span>
+                        <h3>Les Instances</h3>
+                        <p>Comprendre les objets Roblox et leurs propriétés</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 30 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/4-2-services.html" class="lesson-card" data-lesson="4-2">
+                        <span class="lesson-number">4.2</span>
+                        <h3>Les Services</h3>
+                        <p>Players, Workspace, ReplicatedStorage...</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 35 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/4-3-events.html" class="lesson-card" data-lesson="4-3">
+                        <span class="lesson-number">4.3</span>
+                        <h3>Events & Signals</h3>
+                        <p>Réagir aux actions du joueur et du jeu</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 30 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Module 5: Projets -->
+            <div class="course-module" id="module-5">
+                <div class="module-header">
+                    <div class="module-icon expert">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="module-info">
+                        <span class="module-level expert">Expert</span>
+                        <h2>Module 5 : Projets Complets</h2>
+                        <p>Mettez en pratique tout ce que vous avez appris avec des projets réels.</p>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-stats">
+                            <span><i class="fas fa-project-diagram"></i> 2 projets</span>
+                            <span><i class="fas fa-clock"></i> ~1.5h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lessons-grid projects-grid">
+                    <a href="lessons/5-1-leaderstats.html" class="lesson-card project-card" data-lesson="5-1">
+                        <div class="project-preview">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Système Leaderstats</h3>
+                        <p>Créez un tableau des scores (Cash, Level) automatique</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+
+                    <a href="lessons/5-2-click-detector.html" class="lesson-card project-card" data-lesson="5-2">
+                        <div class="project-preview">
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                        <h3>ClickDetector</h3>
+                        <p>Rendez vos objets interactifs et cliquables</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 15 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+
+                    <a href="lessons/5-3-obby.html" class="lesson-card project-card" data-lesson="5-3">
+                        <div class="project-preview">
+                            <i class="fas fa-skull"></i>
+                        </div>
+                        <h3>Obby Basique</h3>
+                        <p>Killbricks, Checkpoints et Spawns</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+
+                    <a href="lessons/5-4-shop.html" class="lesson-card project-card" data-lesson="5-4">
+                        <div class="project-preview">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Boutique d'objets</h3>
+                        <p>Acheter des items avec l'argent du jeu</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 25 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+
+                    <a href="lessons/5-5-datastore.html" class="lesson-card project-card" data-lesson="5-5">
+                        <div class="project-preview">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>DataStore</h3>
+                        <p>Sauvegarder la progression des joueurs</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 30 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Module 6: UI/UX & Interfaces -->
+            <div class="course-module" id="module-6">
+                <div class="module-header">
+                    <div class="module-icon intermediate">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="module-info">
+                        <span class="module-level intermediate">Avancé</span>
+                        <h2>Module 6 : Design UI & Interfaces</h2>
+                        <p>Créez des menus, des boutons et des HUD impressionnants.</p>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-stats">
+                            <span><i class="fas fa-palette"></i> 5 leçons</span>
+                            <span><i class="fas fa-clock"></i> ~1.5h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lessons-grid">
+                    <a href="lessons/6-1-gui-basics.html" class="lesson-card" data-lesson="6-1">
+                        <div class="lesson-number">6.1</div>
+                        <h3>Bases du GUI</h3>
+                        <p>ScreenGui, Frames et Hiérarchie</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 15 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/6-2-elements.html" class="lesson-card" data-lesson="6-2">
+                        <div class="lesson-number">6.2</div>
+                        <h3>Éléments UI</h3>
+                        <p>TextLabels, ImageLabels et Buttons</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/6-3-layouts.html" class="lesson-card" data-lesson="6-3">
+                        <div class="lesson-number">6.3</div>
+                        <h3>Z-Index & Layouts</h3>
+                        <p>Gérer l'ordre d'affichage et l'auto-alignement</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 15 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/6-4-events.html" class="lesson-card" data-lesson="6-4">
+                        <div class="lesson-number">6.4</div>
+                        <h3>Scripts d'Interactions</h3>
+                        <p>Rendre vos boutons vivants avec LocalScripts</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                    <a href="lessons/6-5-tweens.html" class="lesson-card" data-lesson="6-5">
+                        <div class="lesson-number">6.5</div>
+                        <h3>Animations UI</h3>
+                        <p>TweenService pour des menus Premium</p>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 25 min</span>
+                            <span class="lesson-status"><i class="fas fa-circle"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-code"></i></div>
+                        <span>Lua<span class="accent">Master</span></span>
+                    </a>
+                    <p>La plateforme gratuite pour apprendre le Lua et créer des jeux Roblox incroyables.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="courses.html">Cours</a></li>
+                            <li><a href="editor.html">Éditeur</a></li>
+                            <li><a href="quiz.html">Quiz</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 LuaMaster. Fait avec <i class="fas fa-heart"></i> pour les futurs développeurs Roblox.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/courses.js"></script>
+</body>
+
+</html>

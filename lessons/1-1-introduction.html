@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Introduction au Lua - Découvrez le langage de programmation utilisé par Roblox Studio">
+    <title>1.1 Introduction au Lua - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Lesson Content -->
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <!-- Sidebar Navigation -->
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 1 : Fondamentaux</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item active">
+                            <span class="lesson-num">1.1</span>
+                            <span>Introduction au Lua</span>
+                            <i class="fas fa-check completed-icon"></i>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="1-2-premier-script.html">
+                                <span class="lesson-num">1.2</span>
+                                <span>Premier Script</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="1-3-variables.html">
+                                <span class="lesson-num">1.3</span>
+                                <span>Les Variables</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="1-4-types.html">
+                                <span class="lesson-num">1.4</span>
+                                <span>Types de Données</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="1-5-operateurs.html">
+                                <span class="lesson-num">1.5</span>
+                                <span>Opérateurs</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="1-6-conditions.html">
+                                <span class="lesson-num">1.6</span>
+                                <span>Conditions</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-1">Module 1</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 1.1</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge beginner">Débutant</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 10 minutes</span>
+                    </div>
+                    <h1>Introduction au Lua</h1>
+                    <p class="lesson-intro">Découvrez le langage de programmation Lua et pourquoi il est parfait pour
+                        créer des jeux sur Roblox.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-question-circle"></i> Qu'est-ce que Lua ?</h2>
+                    <p>
+                        <strong>Lua</strong> est un langage de programmation léger, rapide et facile à apprendre.
+                        Son nom vient du portugais et signifie <em>"Lune"</em> 🌙.
+                    </p>
+                    <p>
+                        Créé en 1993 au Brésil, Lua est devenu l'un des langages les plus populaires pour
+                        le scripting de jeux vidéo. Il est utilisé dans des jeux comme World of Warcraft,
+                        Angry Birds, et bien sûr... <strong>Roblox</strong> !
+                    </p>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="info-content">
+                            <h4>Le saviez-vous ?</h4>
+                            <p>Lua est si léger que tout l'interpréteur fait moins de 200 Ko ! C'est pour ça qu'il est
+                                parfait pour les jeux.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-gamepad"></i> Lua et Roblox</h2>
+                    <p>
+                        Roblox utilise une version spéciale de Lua appelée <strong>Luau</strong> (prononcé "Lou-aou").
+                        Luau est une évolution de Lua avec des fonctionnalités supplémentaires optimisées pour Roblox.
+                    </p>
+
+                    <h3>Différences entre Lua et Luau</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> <strong>Typage statique optionnel</strong> - Vous pouvez
+                            ajouter des types pour moins d'erreurs</li>
+                        <li><i class="fas fa-check"></i> <strong>Performance améliorée</strong> - Luau est plus rapide
+                            que Lua standard</li>
+                        <li><i class="fas fa-check"></i> <strong>Nouvelles fonctionnalités</strong> - Comme les
+                            génériques et l'interpolation de strings</li>
+                        <li><i class="fas fa-check"></i> <strong>API Roblox intégrée</strong> - Accès aux services et
+                            objets Roblox</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="warning-content">
+                            <h4>Important</h4>
+                            <p>Tout ce que vous apprenez en Lua standard s'applique à Luau. Les concepts de base sont
+                                identiques !</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-star"></i> Pourquoi apprendre Lua ?</h2>
+
+                    <div class="cards-grid">
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h4>Facile à apprendre</h4>
+                            <p>Syntaxe simple et intuitive, parfait pour les débutants</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-rocket"></i></div>
+                            <h4>Rapide à exécuter</h4>
+                            <p>Un des langages de script les plus performants</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-users"></i></div>
+                            <h4>Grande communauté</h4>
+                            <p>Des millions de développeurs Roblox pour vous aider</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <h4>Opportunités</h4>
+                            <p>Créez des jeux et gagnez de l'argent avec Roblox</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-code"></i> Votre premier aperçu</h2>
+                    <p>Voici à quoi ressemble du code Lua. Ne vous inquiétez pas si vous ne comprenez pas tout, nous
+                        allons tout explorer ensemble !</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>exemple.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="comment">-- Ceci est un commentaire en Lua</span>
+<span class="comment">-- Les commentaires commencent par deux tirets</span>
+
+<span class="comment">-- Créer une variable</span>
+<span class="keyword">local</span> <span class="variable">nomDuJoueur</span> = <span class="string">"Alex"</span>
+<span class="keyword">local</span> <span class="variable">niveau</span> = <span class="number">1</span>
+
+<span class="comment">-- Afficher un message</span>
+<span class="function">print</span>(<span class="string">"Bienvenue, "</span> .. <span class="variable">nomDuJoueur</span> .. <span class="string">" !"</span>)
+<span class="function">print</span>(<span class="string">"Ton niveau actuel : "</span> .. <span class="variable">niveau</span>)
+
+<span class="comment">-- Une simple condition</span>
+<span class="keyword">if</span> <span class="variable">niveau</span> &gt;= <span class="number">1</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"Tu es prêt à commencer l'aventure !"</span>)
+<span class="keyword">end</span></code></pre>
+                    </div>
+
+                    <p>Ce petit programme :</p>
+                    <ol>
+                        <li>Crée deux variables : <code>nomDuJoueur</code> et <code>niveau</code></li>
+                        <li>Affiche un message de bienvenue</li>
+                        <li>Vérifie si le niveau est supérieur ou égal à 1</li>
+                    </ol>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-laptop-code"></i> Où écrire du Lua ?</h2>
+                    <p>Pour programmer en Lua pour Roblox, vous avez plusieurs options :</p>
+
+                    <div class="option-cards">
+                        <div class="option-card recommended">
+                            <span class="option-badge">Recommandé</span>
+                            <h4><i class="fas fa-hammer"></i> Roblox Studio</h4>
+                            <p>L'éditeur officiel de Roblox avec tout ce qu'il faut pour créer vos jeux.</p>
+                            <a href="https://www.roblox.com/create" target="_blank" class="option-link">
+                                Télécharger <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <div class="option-card">
+                            <h4><i class="fas fa-code"></i> Notre Éditeur</h4>
+                            <p>Pratiquez le Lua directement dans votre navigateur sans rien installer.</p>
+                            <a href="../editor.html" class="option-link">
+                                Essayer <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li>Lua est un langage de programmation léger et rapide</li>
+                            <li>Roblox utilise Luau, une version améliorée de Lua</li>
+                            <li>Lua est parfait pour les débutants grâce à sa syntaxe simple</li>
+                            <li>Vous pouvez pratiquer avec Roblox Studio ou notre éditeur en ligne</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Navigation -->
+                <nav class="lesson-nav">
+                    <div class="nav-prev disabled">
+                        <span>Première leçon</span>
+                    </div>
+                    <div class="nav-next">
+                        <a href="1-2-premier-script.html">
+                            <span>Leçon suivante</span>
+                            <strong>1.2 Premier Script <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- Complete Button -->
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="1-1">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La boucle While en Lua - Répéter des actions tant qu'une condition est vraie">
+    <title>2.1 Boucle While - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour aux cours</a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 2 : Contrôle de Flux</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item active"><span class="lesson-num">2.1</span><span>Boucle While</span></li>
+                        <li class="lesson-item"><a href="2-2-for.html"><span class="lesson-num">2.2</span><span>Boucle
+                                    For</span></a></li>
+                        <li class="lesson-item"><a href="2-3-fonctions.html"><span
+                                    class="lesson-num">2.3</span><span>Les Fonctions</span></a></li>
+                        <li class="lesson-item"><a href="2-4-parametres.html"><span
+                                    class="lesson-num">2.4</span><span>Paramètres</span></a></li>
+                        <li class="lesson-item"><a href="2-5-scope.html"><span
+                                    class="lesson-num">2.5</span><span>Scope</span></a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a><i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-2">Module 2</a><i class="fas fa-chevron-right"></i>
+                        <span>Leçon 2.1</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge intermediate">Intermédiaire</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 20 minutes</span>
+                    </div>
+                    <h1>La Boucle While</h1>
+                    <p class="lesson-intro">Besoin de répéter une action ? La boucle while ("tant que") est là pour ça.
+                        Elle exécute du code en boucle tant qu'une condition est vraie.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-sync-alt"></i> Comment ça marche ?</h2>
+                    <p>
+                        La boucle <code>while</code> vérifie une condition. Si elle est vraie, elle exécute le code,
+                        puis revérifie la condition.
+                        Elle ne s'arrête que si la condition devient fausse.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>compteur.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">compteur</span> = <span class="number">1</span>
+
+<span class="keyword">while</span> <span class="variable">compteur</span> <= <span class="number">5</span> <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="string">"Compteur: "</span> .. <span class="variable">compteur</span>)
+    <span class="variable">compteur</span> = <span class="variable">compteur</span> + <span class="number">1</span>
+<span class="keyword">end</span>
+
+<span class="function">print</span>(<span class="string">"Boucle terminée !"</span>)</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon"><i class="fas fa-radiation"></i></div>
+                        <div class="warning-content">
+                            <h4>Attention aux boucles infinies !</h4>
+                            <p>Si la condition ne devient jamais fausse, votre script plantera ! Dans Roblox Studio,
+                                cela gèlera le jeu.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-clock"></i> task.wait()</h2>
+                    <p>
+                        Dans Roblox, quand on utilise une boucle <code>while true do</code> (boucle infinie volontaire),
+                        il est <strong>OBLIGATOIRE</strong> d'ajouter une pause pour ne pas faire crasher le jeu.
+                    </p>
+                    <p>On utilise <code>task.wait(secondes)</code> pour cela.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>boucle_infinie.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">while</span> <span class="keyword">true</span> <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="string">"Ce message s'affiche toutes les secondes"</span>)
+    <span class="variable">task</span>.<span class="function">wait</span>(<span class="number">1</span>)  <span class="comment">-- Pause de 1 seconde</span>
+<span class="keyword">end</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-door-open"></i> break (Arrêter la boucle)</h2>
+                    <p>
+                        Le mot-clé <code>break</code> permet de sortir immédiatement d'une boucle,
+                        même si la condition est encore vraie.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>break.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">secondes</span> = <span class="number">0</span>
+
+<span class="keyword">while</span> <span class="keyword">true</span> <span class="keyword">do</span>
+    <span class="variable">secondes</span> = <span class="variable">secondes</span> + <span class="number">1</span>
+    <span class="function">print</span>(<span class="variable">secondes</span>)
+    
+    <span class="keyword">if</span> <span class="variable">secondes</span> >= <span class="number">10</span> <span class="keyword">then</span>
+        <span class="function">print</span>(<span class="string">"Stop !"</span>)
+        <span class="keyword">break</span>  <span class="comment">-- Sort de la boucle</span>
+    <span class="keyword">end</span>
+    
+    <span class="variable">task</span>.<span class="function">wait</span>(<span class="number">1</span>)
+<span class="keyword">end</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-redo"></i> repeat ... until</h2>
+                    <p>
+                        Une variante de while est <code>repeat ... until</code> (répéter ... jusqu'à).
+                        La différence est que le code s'exécute <strong>au moins une fois</strong> car la condition est
+                        vérifiée à la fin.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>repeat.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">num</span> = <span class="number">1</span>
+
+<span class="keyword">repeat</span>
+    <span class="function">print</span>(<span class="string">"Num: "</span> .. <span class="variable">num</span>)
+    <span class="variable">num</span> = <span class="variable">num</span> + <span class="number">1</span>
+<span class="keyword">until</span> <span class="variable">num</span> > <span class="number">3</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li><code>while condition do ... end</code> répète tant que vrai</li>
+                            <li>Ajoutez toujours <code>task.wait()</code> dans les boucles infinies</li>
+                            <li><code>break</code> permet de sortir d'une boucle</li>
+                            <li><code>repeat ... until</code> vérifie la condition à la fin</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="1-6-conditions.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 1.6 Conditions</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="2-2-for.html">
+                            <span>Leçon suivante</span>
+                            <strong>2.2 Boucle For <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="2-1">
+                        <i class="fas fa-check-circle"></i> Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

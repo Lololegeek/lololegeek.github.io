@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="LuaMaster - Apprenez le Lua/Luau pour Roblox Studio avec des cours interactifs, un éditeur de code en ligne et des quiz.">
+    <title>LuaMaster - Apprenez le Lua pour Roblox Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link active">Accueil</a></li>
+                <li><a href="courses.html" class="nav-link">Cours</a></li>
+                <li><a href="editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="courses.html" class="btn btn-primary btn-nav">Commencer</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-particles" id="particles"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-rocket"></i>
+                <span>Formation Gratuite</span>
+            </div>
+            <h1 class="hero-title">
+                Maîtrisez le <span class="gradient-text">Lua/Luau</span><br>
+                pour Roblox Studio
+            </h1>
+            <p class="hero-description">
+                Apprenez à coder vos propres jeux Roblox avec notre formation complète.
+                Des cours interactifs, un éditeur de code en ligne, et des quiz pour valider vos connaissances.
+            </p>
+            <div class="hero-buttons">
+                <a href="courses.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-play"></i>
+                    Commencer la Formation
+                </a>
+                <a href="editor.html" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-code"></i>
+                    Tester l'Éditeur
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="50">0</span>+
+                    <span class="stat-label">Leçons</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="25">0</span>+
+                    <span class="stat-label">Exercices</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="10">0</span>+
+                    <span class="stat-label">Quiz</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="code-title">main.lua</span>
+                </div>
+                <div class="code-content">
+                    <pre><code id="hero-code"></code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Fonctionnalités</span>
+                <h2 class="section-title">Tout ce qu'il vous faut pour <span class="gradient-text">apprendre</span></h2>
+                <p class="section-description">Une plateforme complète conçue pour vous accompagner de débutant à expert
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Cours Structurés</h3>
+                    <p>Des leçons progressives du niveau débutant à expert, avec des explications claires et des
+                        exemples concrets.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>Moteur Lua Réel</h3>
+                    <p>Véritable interpréteur Lua avec simulation de l'API Roblox (Instance, Vector3, etc.) pour une
+                        exécution réelle.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Exercices Pratiques</h3>
+                    <p>Consolidez vos connaissances avec des exercices interactifs et des défis de programmation.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Quiz & Certifications</h3>
+                    <p>Testez vos compétences avec des quiz et obtenez des badges pour chaque module complété.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Suivi de Progression</h3>
+                    <p>Suivez votre avancement avec des statistiques détaillées et un tableau de bord personnalisé.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Projets Roblox</h3>
+                    <p>Apprenez à créer de vrais projets pour Roblox Studio avec des tutoriels étape par étape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Programme</span>
+                <h2 class="section-title">Un parcours <span class="gradient-text">complet</span></h2>
+                <p class="section-description">Du premier print() à la création de systèmes complexes</p>
+            </div>
+            <div class="curriculum-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span>1</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge beginner">Débutant</div>
+                        <h3>Fondamentaux du Lua</h3>
+                        <p>Variables, types de données, opérateurs, conditions et boucles. Les bases essentielles pour
+                            commencer.</p>
+                        <ul class="timeline-topics">
+                            <li><i class="fas fa-check"></i> Variables et Types</li>
+                            <li><i class="fas fa-check"></i> Opérateurs</li>
+                            <li><i class="fas fa-check"></i> Conditions (if/else)</li>
+                            <li><i class="fas fa-check"></i> Boucles (for, while)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span>2</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge intermediate">Intermédiaire</div>
+                        <h3>Fonctions & Tables</h3>
+                        <p>Maîtrisez les fonctions, les tables (tableaux et dictionnaires), et les concepts de scope.
+                        </p>
+                        <ul class="timeline-topics">
+                            <li><i class="fas fa-check"></i> Fonctions</li>
+                            <li><i class="fas fa-check"></i> Tables (Arrays)</li>
+                            <li><i class="fas fa-check"></i> Dictionnaires</li>
+                            <li><i class="fas fa-check"></i> Scope & Closures</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span>3</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge advanced">Avancé</div>
+                        <h3>Luau & Roblox API</h3>
+                        <p>Découvrez les spécificités de Luau et l'API Roblox : Instances, Services, Events.</p>
+                        <ul class="timeline-topics">
+                            <li><i class="fas fa-check"></i> Instances & Propriétés</li>
+                            <li><i class="fas fa-check"></i> Services Roblox</li>
+                            <li><i class="fas fa-check"></i> Events & Signals</li>
+                            <li><i class="fas fa-check"></i> RemoteEvents</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span>4</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge expert">Expert</div>
+                        <h3>Projets Complets</h3>
+                        <p>Créez des systèmes complets : inventaire, combat, DataStore, UI avancée.</p>
+                        <ul class="timeline-topics">
+                            <li><i class="fas fa-check"></i> Système d'inventaire</li>
+                            <li><i class="fas fa-check"></i> Sauvegarde DataStore</li>
+                            <li><i class="fas fa-check"></i> Système de combat</li>
+                            <li><i class="fas fa-check"></i> UI Interactive</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editor Preview Section -->
+    <section class="editor-preview">
+        <div class="container">
+            <div class="editor-preview-content">
+                <div class="editor-preview-text">
+                    <span class="section-badge">Éditeur en Ligne</span>
+                    <h2 class="section-title">Codez <span class="gradient-text">directement</span> dans votre navigateur
+                    </h2>
+                    <p>Notre éditeur de code intégré vous permet de pratiquer sans avoir à installer quoi que ce soit.
+                        Exécutez votre code Lua en temps réel et voyez immédiatement les résultats.</p>
+                    <ul class="editor-features-list">
+                        <li><i class="fas fa-check-circle"></i> Coloration syntaxique</li>
+                        <li><i class="fas fa-check-circle"></i> Exécution en temps réel</li>
+                        <li><i class="fas fa-check-circle"></i> Console de sortie</li>
+                        <li><i class="fas fa-check-circle"></i> Exemples pré-chargés</li>
+                    </ul>
+                    <a href="editor.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-external-link-alt"></i>
+                        Essayer l'Éditeur
+                    </a>
+                </div>
+                <div class="editor-preview-visual">
+                    <div class="editor-mockup">
+                        <div class="editor-mockup-header">
+                            <div class="editor-tabs">
+                                <div class="editor-tab active">
+                                    <i class="fas fa-file-code"></i>
+                                    script.lua
+                                </div>
+                            </div>
+                            <button class="run-btn">
+                                <i class="fas fa-play"></i>
+                                Exécuter
+                            </button>
+                        </div>
+                        <div class="editor-mockup-body">
+                            <div class="line-numbers">
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                            </div>
+                            <pre class="editor-code"><code><span class="keyword">local</span> <span class="variable">player</span> = <span class="string">"Alex"</span>
+<span class="keyword">local</span> <span class="variable">score</span> = <span class="number">100</span>
+
+<span class="function">print</span>(<span class="string">"Bienvenue, "</span> .. <span class="variable">player</span>)
+<span class="function">print</span>(<span class="string">"Votre score: "</span> .. <span class="variable">score</span>)
+
+<span class="comment">-- C'est facile ! 🎮</span></code></pre>
+                        </div>
+                        <div class="editor-mockup-console">
+                            <div class="console-header">
+                                <i class="fas fa-terminal"></i>
+                                Console
+                            </div>
+                            <div class="console-output">
+                                <p><span class="console-success">►</span> Bienvenue, Alex</p>
+                                <p><span class="console-success">►</span> Votre score: 100</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à devenir un <span class="gradient-text">développeur Roblox</span> ?</h2>
+                <p>Commencez votre aventure dès maintenant. C'est gratuit et sans inscription.</p>
+                <a href="courses.html" class="btn btn-white btn-lg">
+                    <i class="fas fa-rocket"></i>
+                    Commencer Gratuitement
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span>Lua<span class="accent">Master</span></span>
+                    </a>
+                    <p>La plateforme gratuite pour apprendre le Lua et créer des jeux Roblox incroyables.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="courses.html">Cours</a></li>
+                            <li><a href="editor.html">Éditeur</a></li>
+                            <li><a href="quiz.html">Quiz</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Ressources</h4>
+                        <ul>
+                            <li><a href="roadmap.html">Roadmap</a></li>
+                            <li><a href="#">Documentation Lua</a></li>
+                            <li><a href="#">API Roblox</a></li>
+                            <li><a href="#">Communauté</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 LuaMaster. Fait avec <i class="fas fa-heart"></i> pour les futurs développeurs Roblox.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

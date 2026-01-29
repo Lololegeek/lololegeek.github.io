@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La boucle For en Lua - Itérer un nombre précis de fois">
+    <title>2.2 Boucle For - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour aux cours</a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 2 : Contrôle de Flux</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item"><a href="2-1-while.html"><span class="lesson-num">2.1</span><span>Boucle
+                                    While</span></a></li>
+                        <li class="lesson-item active"><span class="lesson-num">2.2</span><span>Boucle For</span></li>
+                        <li class="lesson-item"><a href="2-3-fonctions.html"><span
+                                    class="lesson-num">2.3</span><span>Les Fonctions</span></a></li>
+                        <li class="lesson-item"><a href="2-4-parametres.html"><span
+                                    class="lesson-num">2.4</span><span>Paramètres</span></a></li>
+                        <li class="lesson-item"><a href="2-5-scope.html"><span
+                                    class="lesson-num">2.5</span><span>Scope</span></a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a><i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-2">Module 2</a><i class="fas fa-chevron-right"></i>
+                        <span>Leçon 2.2</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge intermediate">Intermédiaire</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 25 minutes</span>
+                    </div>
+                    <h1>La Boucle For</h1>
+                    <p class="lesson-intro">La boucle <code>for</code> est parfaite quand vous savez à l'avance combien
+                        de fois vous voulez répéter une action.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-list-ol"></i> Syntaxe de base</h2>
+                    <p>
+                        Une boucle <code>for</code> numérique compte d'un nombre de départ jusqu'à un nombre de fin.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>for_simple.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="comment">-- for variable = debut, fin do</span>
+<span class="keyword">for</span> <span class="variable">i</span> = <span class="number">1</span>, <span class="number">5</span> <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="string">"Numéro "</span> .. <span class="variable">i</span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- Affiche :</span>
+<span class="comment">-- Numéro 1</span>
+<span class="comment">-- Numéro 2</span>
+<span class="comment">-- Numéro 3</span>
+<span class="comment">-- Numéro 4</span>
+<span class="comment">-- Numéro 5</span></code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="info-content">
+                            <h4>La variable i</h4>
+                            <p>Par convention, on utilise souvent <code>i</code> (pour index ou itérateur), mais vous
+                                pouvez l'appeler comme vous voulez (ex: <code>compteur</code>).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-step-forward"></i> Le Pas (Step)</h2>
+                    <p>
+                        Par défaut, la boucle avance de 1 en 1. Mais vous pouvez changer cela en ajoutant un troisième
+                        nombre : le <strong>pas</strong> (step).
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>pas.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="comment">-- Compter de 2 en 2</span>
+<span class="keyword">for</span> <span class="variable">i</span> = <span class="number">0</span>, <span class="number">10</span>, <span class="number">2</span> <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="variable">i</span>)
+<span class="keyword">end</span>
+<span class="comment">-- Affiche: 0, 2, 4, 6, 8, 10</span>
+
+<span class="comment">-- Compte à rebours (pas négatif)</span>
+<span class="keyword">for</span> <span class="variable">i</span> = <span class="number">5</span>, <span class="number">1</span>, <span class="number">-1</span> <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="variable">i</span> .. <span class="string">"..."</span>)
+    <span class="variable">task</span>.<span class="function">wait</span>(<span class="number">1</span>)
+<span class="keyword">end</span>
+<span class="function">print</span>(<span class="string">"Décollage !"</span>)</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-cubes"></i> Boucles imbriquées</h2>
+                    <p>
+                        On peut mettre une boucle dans une autre boucle. C'est utile pour parcourir des grilles par
+                        exemple.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>imbrique.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">for</span> <span class="variable">x</span> = <span class="number">1</span>, <span class="number">2</span> <span class="keyword">do</span>
+    <span class="keyword">for</span> <span class="variable">y</span> = <span class="number">1</span>, <span class="number">2</span> <span class="keyword">do</span>
+        <span class="function">print</span>(<span class="string">"Coordonnées: "</span> .. <span class="variable">x</span> .. <span class="string">", "</span> .. <span class="variable">y</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-laptop-code"></i> Exercice</h2>
+                    <p>Créez un script qui affiche la table de multiplication de 7 (de 1 à 10).</p>
+                    <p>Exemple de sortie : <code>7 x 1 = 7</code>, <code>7 x 2 = 14</code>...</p>
+
+                    <a href="../editor.html" class="btn btn-primary" style="margin-top: 16px;">
+                        <i class="fas fa-code"></i> Ouvrir l'Éditeur
+                    </a>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li><code>for i = debut, fin do</code> : Boucle standard (+1)</li>
+                            <li><code>for i = debut, fin, pas do</code> : Boucle avec pas personnalisé</li>
+                            <li>Utilisez un pas négatif pour compter à l'envers</li>
+                            <li>Contrairement à <code>while</code>, la boucle <code>for</code> ne risque pas d'être
+                                infinie (sauf si on modifie la variable i, ce qu'il ne faut pas faire !)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="2-1-while.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 2.1 Boucle While</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="2-3-fonctions.html">
+                            <span>Leçon suivante</span>
+                            <strong>2.3 Les Fonctions <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="2-2">
+                        <i class="fas fa-check-circle"></i> Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

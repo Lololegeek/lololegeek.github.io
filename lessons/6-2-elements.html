@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.2 Les Éléments Universels - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="dark-mode">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <div class="lesson-nav">
+                <a href="../courses.html" class="nav-link"><i class="fas fa-th-large"></i> Cours</a>
+                <a href="6-1-gui-basics.html" class="nav-link"><i class="fas fa-arrow-left"></i> Précédent</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="lesson-container">
+        <header class="lesson-header">
+            <div class="container">
+                <span class="lesson-badge">Module 6 • Leçon 6.2</span>
+                <h1>Les Éléments <span class="gradient-text">Universels</span></h1>
+                <p>Découvrez les briques fondamentales pour construire toutes vos interfaces Roblox.</p>
+            </div>
+        </header>
+
+        <section class="lesson-content">
+            <div class="container">
+                <!-- Concept 1: Frame -->
+                <div class="content-card">
+                    <h2><i class="fas fa-square-full"></i> La Frame (Le Conteneur)</h2>
+                    <p>La <strong>Frame</strong> est l'élément de base. Elle ne fait "rien" par elle-même, mais elle
+                        sert de conteneur pour organiser les autres éléments.</p>
+                    <div class="highlight-box">
+                        <p><strong>Propriétés clés :</strong></p>
+                        <ul>
+                            <li><strong>BackgroundColor3 :</strong> La couleur du fond.</li>
+                            <li><strong>BackgroundTransparency :</strong> 0 (opaque) à 1 (invisible).</li>
+                            <li><strong>BorderSizePixel :</strong> Épaisseur de la bordure (souvent mise à 0 pour un
+                                style moderne).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Concept 2: Text Elements -->
+                <div class="content-card">
+                    <h2><i class="fas fa-font"></i> Éléments de Texte</h2>
+                    <div class="dual-column">
+                        <div class="column">
+                            <h3>TextLabel</h3>
+                            <p>Utilisé pour afficher du texte fixe (ex: titres, labels de score).</p>
+                        </div>
+                        <div class="column">
+                            <h3>TextButton</h3>
+                            <p>Un bouton avec du texte qui peut être cliqué par l'utilisateur.</p>
+                        </div>
+                    </div>
+                    <div class="pro-tip">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>TextScaled :</strong> Cochez cette option pour que le texte s'adapte automatiquement
+                            à la taille de la boîte !</p>
+                    </div>
+                </div>
+
+                <!-- Concept 3: Image Elements -->
+                <div class="content-card">
+                    <h2><i class="fas fa-image"></i> Éléments d'Image</h2>
+                    <p>Pour ajouter des icônes, des logos ou des textures de fond, on utilise :</p>
+                    <ul>
+                        <li><strong>ImageLabel :</strong> Simple affichage d'image.</li>
+                        <li><strong>ImageButton :</strong> Une image cliquable (ex: une icône "Fermer").</li>
+                    </ul>
+                    <div class="code-block-header">
+                        <span>Exemple : Changer une image par script</span>
+                    </div>
+                    <pre><code>local logo = script.Parent.Logo
+logo.Image = "rbxassetid://123456789" -- ID de l'image sur Roblox</code></pre>
+                </div>
+
+                <!-- Concept 4: UICorner & UIGradient -->
+                <div class="content-card premium-card">
+                    <h2><i class="fas fa-magic"></i> Moderniser l'UI (UICorner & UIGradient)</h2>
+                    <p>Roblox propose des objets "modificateurs" à placer *à l'intérieur* de vos Frames ou Boutons :</p>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-circle-notch"></i>
+                            <h4>UICorner</h4>
+                            <p>Arrondit les bords de n'importe quel élément UI.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-palette"></i>
+                            <h4>UIGradient</h4>
+                            <p>Ajoute des dégradés de couleurs dynamiques.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clone"></i>
+                            <h4>UIStroke</h4>
+                            <p>Ajoute des bordures précises ou des contours au texte.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Widget -->
+                <div class="quiz-widget-anchor" id="lesson-quiz"></div>
+            </div>
+        </section>
+
+        <footer class="lesson-footer-nav">
+            <div class="container">
+                <div class="nav-controls">
+                    <a href="6-1-gui-basics.html" class="footer-nav-btn prev">
+                        <i class="fas fa-arrow-left"></i>
+                        <div class="btn-text">
+                            <span>Précédent</span>
+                            <strong>Bases des GUIs</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="footer-nav-btn next locked" id="next-lesson-btn">
+                        <div class="btn-text">
+                            <span>Suivant</span>
+                            <strong>Layouts Flexibles</strong>
+                        </div>
+                        <i class="fas fa-lock"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

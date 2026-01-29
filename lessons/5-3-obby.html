@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Créer un Obby Roblox - KillBricks et Checkpoints">
+    <title>5.3 Obby Basique - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 5 : Projets Pratiques</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="5-1-leaderstats.html">
+                                <span class="lesson-num">5.1</span>
+                                <span>Leaderstats</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-2-click-detector.html">
+                                <span class="lesson-num">5.2</span>
+                                <span>ClickDetector</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item active">
+                            <span class="lesson-num">5.3</span>
+                            <span>Obby Basique</span>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-4-shop.html">
+                                <span class="lesson-num">5.4</span>
+                                <span>Boutique</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-5-datastore.html">
+                                <span class="lesson-num">5.5</span>
+                                <span>DataStore</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-5">Module 5</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 5.3</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge project">Projet</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 20 minutes</span>
+                    </div>
+                    <h1>Obby Basique : Killbricks & Checkpoints</h1>
+                    <p class="lesson-intro">Les Obbys (parcours d'obstacles) sont les jeux les plus populaires sur
+                        Roblox. Apprenez à programmer les éléments essentiels : la lave qui tue et les points de
+                        sauvegarde.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-skull"></i> Créer une KillBrick (Lave)</h2>
+                    <p>
+                        Une KillBrick est une brique qui tue le joueur au contact. Pour cela, nous utilisons l'événement
+                        <code>Touched</code>.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>killbrick.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">lave</span> = <span class="variable">script</span>.<span class="variable">Parent</span>
+
+<span class="keyword">local</span> <span class="keyword">function</span> <span class="function">tuerJoueur</span>(<span class="variable">hit</span>)
+    <span class="comment">-- Vérifier si c'est un personnage qui a touché</span>
+    <span class="keyword">local</span> <span class="variable">humanoid</span> = <span class="variable">hit</span>.<span class="variable">Parent</span>:<span class="function">FindFirstChild</span>(<span class="string">"Humanoid"</span>)
+    
+    <span class="keyword">if</span> <span class="variable">humanoid</span> <span class="keyword">then</span>
+        <span class="comment">-- Mettre la santé à 0 = Mort</span>
+        <span class="variable">humanoid</span>.<span class="variable">Health</span> = <span class="number">0</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="variable">lave</span>.<span class="variable">Touched</span>:<span class="function">Connect</span>(<span class="variable">tuerJoueur</span>)</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="warning-content">
+                            <h4>Attention au Debounce</h4>
+                            <p>L'événement Touched se déclenche très vite et plusieurs fois. Pour tuer, ce n'est pas
+                                grave, mais pour donner des récompenses, il faudra un système anti-spam (debounce).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-flag"></i> Système de Checkpoints</h2>
+                    <p>
+                        Roblox gère les Spawns automatiquement grâce aux <strong>SpawnLocation</strong> et leur
+                        propriété <code>TeamColor</code>, mais pour un Obby linéaire, nous voulons changer le point de
+                        réapparition quand on touche un checkpoint.
+                    </p>
+
+                    <h3>1. Utiliser les SpawnLocation</h3>
+                    <p>La méthode la plus simple sans script complexe :</p>
+                    <ul class="feature-list">
+                        <li>Ajoutez des objets <strong>SpawnLocation</strong></li>
+                        <li>Cochez <strong>AllowTeamChangeOnTouch</strong></li>
+                        <li>Cochez <strong>Neutral</strong> = false</li>
+                        <li>Donnez une <strong>TeamColor</strong> unique à chaque checkpoint</li>
+                        <li>Créez les <strong>Teams</strong> correspondantes dans le service Teams</li>
+                    </ul>
+
+                    <h3>2. Méthode Scriptée (Plus pro)</h3>
+                    <p>Pour éviter d'avoir 50 Teams, on utilise les Leaderstats pour stocker le niveau du joueur.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>checkpoint_manager.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">Players</span> = <span class="variable">game</span>:<span class="function">GetService</span>(<span class="string">"Players"</span>)
+
+<span class="comment">-- Quand un joueur rejoint</span>
+<span class="variable">Players</span>.<span class="variable">PlayerAdded</span>:<span class="function">Connect</span>(<span class="keyword">function</span>(<span class="variable">player</span>)
+    <span class="comment">-- Créer leaderstats avec Stage</span>
+    <span class="keyword">local</span> <span class="variable">stats</span> = <span class="function">Instance.new</span>(<span class="string">"Folder"</span>)
+    <span class="variable">stats</span>.<span class="variable">Name</span> = <span class="string">"leaderstats"</span>
+    <span class="variable">stats</span>.<span class="variable">Parent</span> = <span class="variable">player</span>
+    
+    <span class="keyword">local</span> <span class="variable">stage</span> = <span class="function">Instance.new</span>(<span class="string">"IntValue"</span>)
+    <span class="variable">stage</span>.<span class="variable">Name</span> = <span class="string">"Stage"</span>
+    <span class="variable">stage</span>.<span class="variable">Value</span> = <span class="number">1</span>
+    <span class="variable">stage</span>.<span class="variable">Parent</span> = <span class="variable">stats</span>
+    
+    <span class="comment">-- Gérer la réapparition</span>
+    <span class="variable">player</span>.<span class="variable">CharacterAdded</span>:<span class="function">Connect</span>(<span class="keyword">function</span>(<span class="variable">character</span>)
+        <span class="comment">-- Attendre un peu que le personnage charge</span>
+        <span class="function">wait</span>(<span class="number">0.1</span>)
+        
+        <span class="comment">-- Trouver le checkpoint correspondant</span>
+        <span class="keyword">local</span> <span class="variable">checkpoint</span> = <span class="variable">workspace</span>.<span class="variable">Checkpoints</span>:<span class="function">FindFirstChild</span>(<span class="variable">stage</span>.<span class="variable">Value</span>)
+        
+        <span class="keyword">if</span> <span class="variable">checkpoint</span> <span class="keyword">then</span>
+            <span class="comment">-- Téléporter le joueur</span>
+            <span class="variable">character</span>:<span class="function">MoveTo</span>(<span class="variable">checkpoint</span>.<span class="variable">Position</span>)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>)</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-map-marker-alt"></i> Script du Checkpoint</h2>
+                    <p>Ce script va dans chaque brique de checkpoint (nommées "1", "2", "3"... dans un dossier
+                        "Checkpoints").</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>checkpoint_touch.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">checkpoint</span> = <span class="variable">script</span>.<span class="variable">Parent</span>
+<span class="keyword">local</span> <span class="variable">numeroStage</span> = <span class="function">tonumber</span>(<span class="variable">checkpoint</span>.<span class="variable">Name</span>) <span class="comment">-- Le nom doit être "1", "2"...</span>
+
+<span class="variable">checkpoint</span>.<span class="variable">Touched</span>:<span class="function">Connect</span>(<span class="keyword">function</span>(<span class="variable">hit</span>)
+    <span class="keyword">local</span> <span class="variable">player</span> = <span class="variable">game</span>.<span class="variable">Players</span>:<span class="function">GetPlayerFromCharacter</span>(<span class="variable">hit</span>.<span class="variable">Parent</span>)
+    
+    <span class="keyword">if</span> <span class="variable">player</span> <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="variable">st</span> = <span class="variable">player</span>.<span class="variable">leaderstats</span>.<span class="variable">Stage</span>
+        
+        <span class="comment">-- Si le joueur atteint le checkpoint suivant</span>
+        <span class="keyword">if</span> <span class="variable">st</span>.<span class="variable">Value</span> == <span class="variable">numeroStage</span> - <span class="number">1</span> <span class="keyword">then</span>
+            <span class="variable">st</span>.<span class="variable">Value</span> = <span class="variable">numeroStage</span>
+            
+            <span class="comment">-- Effet visuel (changement de couleur vert)</span>
+            <span class="variable">checkpoint</span>.<span class="variable">BrickColor</span> = <span class="function">BrickColor.new</span>(<span class="string">"Lime green"</span>)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>)</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li><strong>KillBrick</strong> : Utilise <code>Touched</code> et met
+                                <code>Humanoid.Health = 0</code></li>
+                            <li><strong>Checkpoints</strong> : Utilisent une valeur "Stage" dans les leaderstats</li>
+                            <li><strong>CharacterAdded</strong> : Event qui se lance quand le joueur respawn</li>
+                            <li><strong>MoveTo</strong> : Fonction pour téléporter un Model (le personnage)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="5-2-click-detector.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 5.2 ClickDetector</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="5-4-shop.html">
+                            <span>Leçon suivante</span>
+                            <strong>5.4 Boutique <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="5-3">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

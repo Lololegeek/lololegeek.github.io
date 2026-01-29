@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Itération en Lua avec pairs et ipairs - Apprenez à parcourir vos tables efficacement">
+    <title>3.3 Itération (pairs/ipairs) - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Lesson Content -->
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <!-- Sidebar Navigation -->
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 3 : Tables</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="3-1-tables-intro.html">
+                                <span class="lesson-num">3.1</span>
+                                <span>Introduction aux Tables</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="3-2-dictionnaires.html">
+                                <span class="lesson-num">3.2</span>
+                                <span>Dictionnaires</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item active">
+                            <span class="lesson-num">3.3</span>
+                            <span>Itération (pairs/ipairs)</span>
+                            <i class="fas fa-check completed-icon"></i>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-3">Module 3</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 3.3</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge intermediate">Intermédiaire</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 20 minutes</span>
+                    </div>
+                    <h1>Itération : pairs & ipairs</h1>
+                    <p class="lesson-intro">Maîtrisez les deux fonctions essentielles pour parcourir vos tables en Lua :
+                        ipairs pour les tableaux et pairs pour les dictionnaires.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-repeat"></i> Pourquoi itérer ?</h2>
+                    <p>
+                        Souvent, vous aurez besoin de parcourir tous les éléments d'une table pour les afficher, les
+                        modifier ou effectuer des calculs. C'est là qu'interviennent <code>ipairs</code> et
+                        <code>pairs</code>.
+                    </p>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-list-ol"></i> ipairs - Pour les Tableaux</h2>
+                    <p>
+                        <code>ipairs</code> (indexed pairs) parcourt les éléments d'un tableau dans l'ordre, en
+                        commençant à l'index 1 et en s'arrêtant au premier <code>nil</code>.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>ipairs_exemple.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">fruits</span> = {<span class="string">"Pomme"</span>, <span class="string">"Banane"</span>, <span class="string">"Orange"</span>, <span class="string">"Kiwi"</span>}
+
+<span class="comment">-- Parcourir avec ipairs</span>
+<span class="keyword">for</span> <span class="variable">index</span>, <span class="variable">fruit</span> <span class="keyword">in</span> <span class="function">ipairs</span>(<span class="variable">fruits</span>) <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="variable">index</span> .. <span class="string">". "</span> .. <span class="variable">fruit</span>)
+<span class="keyword">end</span>
+
+<span class="comment">--[[
+Résultat :
+1. Pomme
+2. Banane
+3. Orange
+4. Kiwi
+]]</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="warning-content">
+                            <h4>ipairs s'arrête au premier nil !</h4>
+                            <p>Si votre tableau a un "trou" (une valeur nil au milieu), ipairs s'arrêtera à cet endroit.
+                                Utilisez pairs pour parcourir tous les éléments.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-book-open"></i> pairs - Pour Tout</h2>
+                    <p>
+                        <code>pairs</code> parcourt <strong>toutes</strong> les paires clé-valeur d'une table, y compris
+                        les clés non-numériques (dictionnaires). L'ordre n'est <strong>pas garanti</strong>.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>pairs_exemple.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">joueur</span> = {
+    <span class="variable">nom</span> = <span class="string">"Alex"</span>,
+    <span class="variable">niveau</span> = <span class="number">42</span>,
+    <span class="variable">points</span> = <span class="number">1500</span>,
+    <span class="variable">vip</span> = <span class="keyword">true</span>
+}
+
+<span class="comment">-- Parcourir avec pairs</span>
+<span class="keyword">for</span> <span class="variable">cle</span>, <span class="variable">valeur</span> <span class="keyword">in</span> <span class="function">pairs</span>(<span class="variable">joueur</span>) <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="variable">cle</span> .. <span class="string">" = "</span> .. <span class="function">tostring</span>(<span class="variable">valeur</span>))
+<span class="keyword">end</span>
+
+<span class="comment">--[[
+Résultat (ordre peut varier) :
+nom = Alex
+vip = true
+niveau = 42
+points = 1500
+]]</span></code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="info-content">
+                            <h4>tostring() pour les booléens</h4>
+                            <p>On utilise <code>tostring(valeur)</code> car la concaténation avec <code>..</code> ne
+                                fonctionne pas directement avec les booléens.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-balance-scale"></i> ipairs vs pairs</h2>
+
+                    <div class="cards-grid">
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-list-ol"></i></div>
+                            <h4>ipairs</h4>
+                            <p>Tableaux ordonnés<br>Indices 1, 2, 3...<br>Ordre garanti<br>S'arrête au premier nil</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon"><i class="fas fa-book"></i></div>
+                            <h4>pairs</h4>
+                            <p>Toutes les tables<br>Clés de tout type<br>Ordre non garanti<br>Parcourt tout</p>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>comparaison.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">mixte</span> = {
+    [<span class="number">1</span>] = <span class="string">"Premier"</span>,
+    [<span class="number">2</span>] = <span class="string">"Deuxième"</span>,
+    <span class="variable">nom</span> = <span class="string">"Test"</span>,
+    [<span class="number">3</span>] = <span class="string">"Troisième"</span>
+}
+
+<span class="function">print</span>(<span class="string">"=== ipairs ==="</span>)
+<span class="keyword">for</span> <span class="variable">i</span>, <span class="variable">v</span> <span class="keyword">in</span> <span class="function">ipairs</span>(<span class="variable">mixte</span>) <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="variable">i</span>, <span class="variable">v</span>)
+<span class="keyword">end</span>
+<span class="comment">-- Affiche : 1 Premier, 2 Deuxième, 3 Troisième</span>
+<span class="comment">-- (Ignore "nom" car c'est une clé string)</span>
+
+<span class="function">print</span>(<span class="string">"=== pairs ==="</span>)
+<span class="keyword">for</span> <span class="variable">k</span>, <span class="variable">v</span> <span class="keyword">in</span> <span class="function">pairs</span>(<span class="variable">mixte</span>) <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="variable">k</span>, <span class="variable">v</span>)
+<span class="keyword">end</span>
+<span class="comment">-- Affiche TOUT (ordre variable) :</span>
+<span class="comment">-- 1 Premier, 2 Deuxième, nom Test, 3 Troisième</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-gamepad"></i> Exemple Roblox</h2>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>roblox_exemple.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="comment">-- Parcourir tous les joueurs</span>
+<span class="keyword">local</span> <span class="variable">Players</span> = <span class="variable">game</span>:GetService(<span class="string">"Players"</span>)
+
+<span class="keyword">for</span> <span class="variable">_</span>, <span class="variable">player</span> <span class="keyword">in</span> <span class="function">ipairs</span>(<span class="variable">Players</span>:GetPlayers()) <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="variable">player</span>.<span class="variable">Name</span> .. <span class="string">" est dans le jeu"</span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- Parcourir les enfants du Workspace</span>
+<span class="keyword">for</span> <span class="variable">_</span>, <span class="variable">child</span> <span class="keyword">in</span> <span class="function">pairs</span>(<span class="variable">workspace</span>:GetChildren()) <span class="keyword">do</span>
+    <span class="keyword">if</span> <span class="variable">child</span>:IsA(<span class="string">"Part"</span>) <span class="keyword">then</span>
+        <span class="function">print</span>(<span class="string">"Part trouvée : "</span> .. <span class="variable">child</span>.<span class="variable">Name</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+                        <div class="info-content">
+                            <h4>L'underscore _ comme variable</h4>
+                            <p>Quand vous n'avez pas besoin de l'index/clé, utilisez <code>_</code> comme nom de
+                                variable. C'est une convention pour dire "je n'utilise pas cette valeur".</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li><code>ipairs</code> : pour les tableaux (indices numériques 1, 2, 3...)</li>
+                            <li><code>pairs</code> : pour tout type de table (dictionnaires inclus)</li>
+                            <li>ipairs garantit l'ordre, pairs ne le garantit pas</li>
+                            <li>ipairs s'arrête au premier nil, pairs parcourt tout</li>
+                            <li>Syntaxe : <code>for clé, valeur in pairs(table) do</code></li>
+                            <li>Utilisez <code>_</code> quand vous n'avez pas besoin de la clé</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Navigation -->
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="3-2-dictionnaires.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 3.2 Dictionnaires</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="4-1-instances.html">
+                            <span>Leçon suivante</span>
+                            <strong>4.1 Les Instances <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- Complete Button -->
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="3-3">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

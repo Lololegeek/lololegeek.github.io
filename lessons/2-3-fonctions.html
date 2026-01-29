@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Les Fonctions en Lua - Créer du code réutilisable">
+    <title>2.3 Les Fonctions - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour aux cours</a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 2 : Contrôle de Flux</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item"><a href="2-1-while.html"><span class="lesson-num">2.1</span><span>Boucle
+                                    While</span></a></li>
+                        <li class="lesson-item"><a href="2-2-for.html"><span class="lesson-num">2.2</span><span>Boucle
+                                    For</span></a></li>
+                        <li class="lesson-item active"><span class="lesson-num">2.3</span><span>Les Fonctions</span>
+                        </li>
+                        <li class="lesson-item"><a href="2-4-parametres.html"><span
+                                    class="lesson-num">2.4</span><span>Paramètres</span></a></li>
+                        <li class="lesson-item"><a href="2-5-scope.html"><span
+                                    class="lesson-num">2.5</span><span>Scope</span></a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a><i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-2">Module 2</a><i class="fas fa-chevron-right"></i>
+                        <span>Leçon 2.3</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge intermediate">Intermédiaire</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 30 minutes</span>
+                    </div>
+                    <h1>Les Fonctions</h1>
+                    <p class="lesson-intro">Les fonctions permettent d'organiser votre code en blocs réutilisables.
+                        C'est la clé pour créer des programmes complexes mais organisés.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-magic"></i> Qu'est-ce qu'une fonction ?</h2>
+                    <p>
+                        Imaginez une fonction comme une recette de cuisine. Vous lui donnez un nom (ex: "Faire des
+                        crêpes"),
+                        et chaque fois que vous voulez des crêpes, vous dites simplement "Faire des crêpes" au lieu de
+                        relire toute la recette.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>fonction.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="comment">-- 1. Définition de la fonction</span>
+<span class="keyword">local</span> <span class="keyword">function</span> <span class="function">saluer</span>()
+    <span class="function">print</span>(<span class="string">"Bonjour !"</span>)
+    <span class="function">print</span>(<span class="string">"Comment allez-vous ?"</span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- 2. Appel de la fonction</span>
+<span class="function">saluer</span>()
+<span class="function">saluer</span>()  <span class="comment">-- On peut l'appeler autant de fois qu'on veut !</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="warning-content">
+                            <h4>Local vs Global</h4>
+                            <p>Comme pour les variables, utilisez <code>local function</code> pour que votre fonction ne
+                                soit accessible que dans le script actuel. C'est plus propre et plus rapide !</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-project-diagram"></i> Pourquoi utiliser des fonctions ?</h2>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> <strong>Réutilisation</strong> : Écrivez le code une fois,
+                            utilisez-le partout</li>
+                        <li><i class="fas fa-check"></i> <strong>Organisation</strong> : Découpez un gros problème en
+                            petits morceaux</li>
+                        <li><i class="fas fa-check"></i> <strong>Lisibilité</strong> : <code>tuerMonstre()</code> est
+                            plus clair que 50 lignes de code de combat</li>
+                    </ul>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-cogs"></i> Paramètres (Arguments)</h2>
+                    <p>
+                        Les fonctions sont encore plus puissantes quand on leur donne des données.
+                        On appelle ça des <strong>paramètres</strong> ou arguments.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>params.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="keyword">function</span> <span class="function">direBonjour</span>(<span class="variable">prenom</span>)
+    <span class="function">print</span>(<span class="string">"Salut "</span> .. <span class="variable">prenom</span> .. <span class="string">" !"</span>)
+<span class="keyword">end</span>
+
+<span class="function">direBonjour</span>(<span class="string">"Alex"</span>)   <span class="comment">-- Salut Alex !</span>
+<span class="function">direBonjour</span>(<span class="string">"Sarah"</span>)  <span class="comment">-- Salut Sarah !</span>
+
+<span class="comment">-- Plusieurs paramètres</span>
+<span class="keyword">local</span> <span class="keyword">function</span> <span class="function">additionner</span>(<span class="variable">a</span>, <span class="variable">b</span>)
+    <span class="function">print</span>(<span class="variable">a</span> + <span class="variable">b</span>)
+<span class="keyword">end</span>
+
+<span class="function">additionner</span>(<span class="number">10</span>, <span class="number">5</span>)  <span class="comment">-- 15</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-reply"></i> Retourner une valeur (return)</h2>
+                    <p>
+                        Parfois, on veut que la fonction nous <strong>donne</strong> un résultat au lieu de juste
+                        l'afficher.
+                        On utilise <code>return</code>.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>return.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="keyword">function</span> <span class="function">carre</span>(<span class="variable">nombre</span>)
+    <span class="keyword">return</span> <span class="variable">nombre</span> * <span class="variable">nombre</span>
+<span class="keyword">end</span>
+
+<span class="keyword">local</span> <span class="variable">resultat</span> = <span class="function">carre</span>(<span class="number">5</span>)
+<span class="function">print</span>(<span class="variable">resultat</span>)  <span class="comment">-- 25</span>
+
+<span class="comment">-- On peut l'utiliser directement</span>
+<span class="function">print</span>(<span class="function">carre</span>(<span class="number">10</span>) + <span class="number">2</span>)  <span class="comment">-- 102</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-laptop-code"></i> Exercice</h2>
+                    <p>Créez une fonction <code>estMajeur(age)</code> qui retourne <code>true</code> si l'âge est >= 18,
+                        et <code>false</code> sinon.</p>
+
+                    <a href="../editor.html" class="btn btn-primary" style="margin-top: 16px;">
+                        <i class="fas fa-code"></i> Ouvrir l'Éditeur
+                    </a>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li>Définition : <code>local function nom() ... end</code></li>
+                            <li>Appel : <code>nom()</code></li>
+                            <li>Les <strong>paramètres</strong> permettent de passer des données à la fonction</li>
+                            <li><code>return</code> permet de récupérer un résultat de la fonction</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="2-2-for.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 2.2 Boucle For</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="2-4-parametres.html">
+                            <span>Leçon suivante</span>
+                            <strong>2.4 Paramètres Avancés <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="2-3">
+                        <i class="fas fa-check-circle"></i> Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

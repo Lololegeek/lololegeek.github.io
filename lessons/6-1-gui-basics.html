@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bases du GUI Roblox - Apprenez à créer des interfaces utilisateur">
+    <title>6.1 Bases du GUI - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 6 : Design UI</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item active">
+                            <span class="lesson-num">6.1</span>
+                            <span>Bases du GUI</span>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-2-elements.html">
+                                <span class="lesson-num">6.2</span>
+                                <span>Éléments UI</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-3-layouts.html">
+                                <span class="lesson-num">6.3</span>
+                                <span>Z-Index & Layouts</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-4-events.html">
+                                <span class="lesson-num">6.4</span>
+                                <span>Interactions</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-5-tweens.html">
+                                <span class="lesson-num">6.5</span>
+                                <span>Animations UI</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-6">Module 6</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 6.1</span>
+                    </div>
+                    <h1>Introduction aux Interfaces (GUI)</h1>
+                    <p class="lesson-intro">Apprenez à créer des éléments visuels qui s'affichent sur l'écran du joueur
+                        (HUD, menus, inventaires).</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-layer-group"></i> La Hiérarchie du GUI</h2>
+                    <p>Dans Roblox, toutes les interfaces 2D sont stockées dans le service <strong>StarterGui</strong>.
+                        Voici la structure typique :</p>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-sitemap"></i></div>
+                        <div class="info-content">
+                            <ol>
+                                <li><strong>StarterGui</strong> (Le conteneur global)</li>
+                                <li><strong>ScreenGui</strong> (Le "calque" qui couvre l'écran)</li>
+                                <li><strong>Frame</strong> (Un rectangle/panneau pour organiser les éléments)</li>
+                                <li><strong>Éléments</strong> (Boutons, Textes, Images)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-expand"></i> ScreenGui vs Frame</h2>
+                    <p>Le <strong>ScreenGui</strong> est indispensable. Sans lui, rien ne s'affiche à l'écran. Il
+                        possède une propriété importante : <code>ResetOnSpawn</code>. Si elle est cochée, l'interface se
+                        réinitialise quand le joueur meurt.</p>
+                    <p>La <strong>Frame</strong> est comme un dossier visuel. Elle permet de regrouper plusieurs boutons
+                        ou textes pour les déplacer ou les masquer tous en même temps.</p>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-arrows-alt"></i> Position et Taille (Scale vs Offset)</h2>
+                    <p>C'est l'erreur n°1 des débutants. Roblox utilise deux systèmes :</p>
+                    <ul>
+                        <li><strong>Scale</strong> (0 à 1) : Pourcentage de l'écran. <code>{0.5, 0}</code> = Pile au
+                            milieu. <strong>À favoriser !</strong></li>
+                        <li><strong>Offset</strong> (Pixels) : Taille fixe. <code>{0, 100}</code> = 100 pixels.
+                            <em>Attention : sur mobile, 100px c'est énorme !</em></li>
+                    </ul>
+                    <div class="tip-box">
+                        <i class="fas fa-magic"></i> Utilise toujours le <strong>Scale</strong> pour que ton UI soit
+                        "Responsive" (adaptée à tous les écrans).
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="5-5-datastore.html">
+                            <i class="fas fa-arrow-left"></i> 5.5 DataStore
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="6-2-elements.html">
+                            6.2 Éléments UI <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="6-1">
+                        <i class="fas fa-check-circle"></i> Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

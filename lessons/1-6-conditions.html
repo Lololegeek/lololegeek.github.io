@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Les Conditions en Lua - If, Elseif et Else pour contrôler le flux du programme">
+    <title>1.6 Conditions - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour aux cours</a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 1 : Fondamentaux</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item"><a href="1-1-introduction.html"><span
+                                    class="lesson-num">1.1</span><span>Introduction</span></a></li>
+                        <li class="lesson-item"><a href="1-2-premier-script.html"><span
+                                    class="lesson-num">1.2</span><span>Premier Script</span></a></li>
+                        <li class="lesson-item"><a href="1-3-variables.html"><span
+                                    class="lesson-num">1.3</span><span>Les Variables</span></a></li>
+                        <li class="lesson-item"><a href="1-4-types.html"><span class="lesson-num">1.4</span><span>Types
+                                    de Données</span></a></li>
+                        <li class="lesson-item"><a href="1-5-operateurs.html"><span
+                                    class="lesson-num">1.5</span><span>Opérateurs</span></a></li>
+                        <li class="lesson-item active"><span class="lesson-num">1.6</span><span>Conditions</span></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a><i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-1">Module 1</a><i class="fas fa-chevron-right"></i>
+                        <span>Leçon 1.6</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge beginner">Débutant</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 25 minutes</span>
+                    </div>
+                    <h1>Les Conditions</h1>
+                    <p class="lesson-intro">Les conditions permettent à votre programme de prendre des décisions
+                        intelligentes en fonction des données.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-code-branch"></i> La structure if</h2>
+                    <p>
+                        L'instruction <code>if</code> (si) exécute un bloc de code SEULEMENT si une condition est vraie.
+                        Elle se termine toujours par <code>end</code>.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>if_simple.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">estNuit</span> = <span class="keyword">true</span>
+
+<span class="keyword">if</span> <span class="variable">estNuit</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"Allumer les lumières"</span>)
+<span class="keyword">end</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="warning-content">
+                            <h4>N'oubliez pas le "then" !</h4>
+                            <p>En Lua, il faut TOUJOURS mettre <code>then</code> après la condition. C'est une erreur
+                                très courante de l'oublier.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-random"></i> if ... else (Sinon)</h2>
+                    <p><code>else</code> permet d'exécuter un code alternatif si la condition est fausse.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>else.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">score</span> = <span class="number">45</span>
+
+<span class="keyword">if</span> <span class="variable">score</span> >= <span class="number">50</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"Tu as gagné !"</span>)
+<span class="keyword">else</span>
+    <span class="function">print</span>(<span class="string">"Tu as perdu... Essaie encore !"</span>)
+<span class="keyword">end</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-layer-group"></i> elseif (Sinon Si)</h2>
+                    <p>Pour tester plusieurs conditions à la suite, on utilise <code>elseif</code>.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>elseif.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">feu</span> = <span class="string">"Orange"</span>
+
+<span class="keyword">if</span> <span class="variable">feu</span> == <span class="string">"Vert"</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"Avancez"</span>)
+<span class="keyword">elseif</span> <span class="variable">feu</span> == <span class="string">"Orange"</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"Ralentissez"</span>)
+<span class="keyword">elseif</span> <span class="variable">feu</span> == <span class="string">"Rouge"</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"Stop !"</span>)
+<span class="keyword">else</span>
+    <span class="function">print</span>(<span class="string">"Feu en panne ?"</span>)
+<span class="keyword">end</span></code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="info-content">
+                            <h4>Ordre des conditions</h4>
+                            <p>Lua vérifie les conditions dans l'ordre. Dès qu'une condition est vraie, il exécute son
+                                bloc et ignore le reste.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-project-diagram"></i> Conditions imbriquées</h2>
+                    <p>Vous pouvez mettre des <code>if</code> dans des <code>if</code> (mais attention à ne pas en
+                        abuser, c'est dur à lire !).</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>imbrique.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">estConnecte</span> = <span class="keyword">true</span>
+<span class="keyword">local</span> <span class="variable">estAdmin</span> = <span class="keyword">false</span>
+
+<span class="keyword">if</span> <span class="variable">estConnecte</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"Bienvenue !"</span>)
+    
+    <span class="keyword">if</span> <span class="variable">estAdmin</span> <span class="keyword">then</span>
+        <span class="function">print</span>(<span class="string">"Panneau Admin ouvert"</span>)
+    <span class="keyword">else</span>
+        <span class="function">print</span>(<span class="string">"Menu Joueur ouvert"</span>)
+    <span class="keyword">end</span>
+<span class="keyword">else</span>
+    <span class="function">print</span>(<span class="string">"Veuillez vous connecter"</span>)
+<span class="keyword">end</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li><code>if condition then</code> : Début de la condition</li>
+                            <li><code>elseif condition then</code> : Alternative si la précédente est fausse</li>
+                            <li><code>else</code> : Si aucune condition n'est vraie</li>
+                            <li><code>end</code> : Fin obligatoire du bloc</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="1-5-operateurs.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 1.5 Opérateurs</strong>
+                        </a>
+                    </div>
+                    <!-- Module suivant -->
+                    <div class="nav-next">
+                        <a href="2-1-while.html">
+                            <span>Module Suivant</span>
+                            <strong>2.1 Boucle while <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="1-6">
+                        <i class="fas fa-check-circle"></i> Terminer le Module 1
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

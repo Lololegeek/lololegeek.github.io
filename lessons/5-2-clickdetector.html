@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ClickDetector Roblox Script - Créer des boutons et des objets interactifs">
+    <title>5.2 ClickDetector - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour aux cours</a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 5 : Projets Pratiques</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item"><a href="5-1-leaderstats.html"><span
+                                    class="lesson-num">5.1</span><span>Leaderstats</span></a></li>
+                        <li class="lesson-item active"><span class="lesson-num">5.2</span><span>ClickDetector</span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a><i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-5">Module 5</a><i class="fas fa-chevron-right"></i>
+                        <span>Leçon 5.2</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge expert">Projet</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 30 minutes</span>
+                    </div>
+                    <h1>Projet : ClickDetector Interactif</h1>
+                    <p class="lesson-intro">Rendons le monde vivant ! Vous allez créer un bouton qui change de couleur
+                        quand on clique dessus et qui donne de l'argent.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-hand-pointer"></i> Mise en place</h2>
+                    <p>Pour rendre un objet cliquable, il ne faut pas scripter la souris directement. On utilise l'objet
+                        <code>ClickDetector</code>.</p>
+                    <ul>
+                        <li>1. Créez une Part</li>
+                        <li>2. Ajoutez-lui un ClickDetector (via le bouton +)</li>
+                        <li>3. Ajoutez un Script dans la Part</li>
+                    </ul>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-code"></i> Script du Bouton Magique</h2>
+                    <p>Ce script va changer la couleur de la part aléatoirement et donner 10$ au joueur à chaque clic.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>bouton.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">part</span> = <span class="variable">script</span>.<span class="variable">Parent</span>
+<span class="keyword">local</span> <span class="variable">cd</span> = <span class="variable">part</span>:<span class="function">FindFirstChild</span>(<span class="string">"ClickDetector"</span>)
+
+<span class="comment">-- Fonction appelée au clic</span>
+<span class="keyword">local</span> <span class="keyword">function</span> <span class="function">onClick</span>(<span class="variable">player</span>)
+    <span class="function">print</span>(<span class="variable">player</span>.<span class="variable">Name</span> .. <span class="string">" a cliqué !"</span>)
+    
+    <span class="comment">-- 1. Changer la couleur aléatoirement</span>
+    <span class="variable">part</span>.<span class="variable">Color</span> = <span class="variable">Color3</span>.<span class="function">new</span>(<span class="variable">math</span>.<span class="function">random</span>(), <span class="variable">math</span>.<span class="function">random</span>(), <span class="variable">math</span>.<span class="function">random</span>())
+    
+    <span class="comment">-- 2. Donner de l'argent (si leaderstats existe)</span>
+    <span class="keyword">local</span> <span class="variable">stats</span> = <span class="variable">player</span>:<span class="function">FindFirstChild</span>(<span class="string">"leaderstats"</span>)
+    <span class="keyword">if</span> <span class="variable">stats</span> <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="variable">cash</span> = <span class="variable">stats</span>:<span class="function">FindFirstChild</span>(<span class="string">"Cash"</span>)
+        <span class="keyword">if</span> <span class="variable">cash</span> <span class="keyword">then</span>
+            <span class="variable">cash</span>.<span class="variable">Value</span> = <span class="variable">cash</span>.<span class="variable">Value</span> + <span class="number">10</span>
+            <span class="function">print</span>(<span class="string">"+10$ pour "</span> .. <span class="variable">player</span>.<span class="variable">Name</span>)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">-- Connecter l'événement</span>
+<span class="variable">cd</span>.<span class="variable">MouseClick</span>:<span class="function">Connect</span>(<span class="variable">onClick</span>)</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-award"></i> Conclusion de la formation</h2>
+                    <p>Bravo ! Vous avez terminé les fondations du scripting Lua sur Roblox.</p>
+                    <p>Vous savez maintenant manipuler des variables, des fonctions, des boucles, et utiliser l'API
+                        Roblox pour créer des objets et des interactions.</p>
+                    <p>La prochaine étape ? Ouvrir Roblox Studio et créer votre propre jeu ! 🚀</p>
+                </section>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary complete-btn" id="complete-lesson" data-lesson="5-2">
+                        <i class="fas fa-graduation-cap"></i> Terminer la Formation
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

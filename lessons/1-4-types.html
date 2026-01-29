@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Types de Données en Lua - Strings, Numbers, Booleans et Nil expliqués">
+    <title>1.4 Types de Données - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour aux cours</a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 1 : Fondamentaux</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item"><a href="1-1-introduction.html"><span
+                                    class="lesson-num">1.1</span><span>Introduction</span></a></li>
+                        <li class="lesson-item"><a href="1-2-premier-script.html"><span
+                                    class="lesson-num">1.2</span><span>Premier Script</span></a></li>
+                        <li class="lesson-item"><a href="1-3-variables.html"><span
+                                    class="lesson-num">1.3</span><span>Les Variables</span></a></li>
+                        <li class="lesson-item active"><span class="lesson-num">1.4</span><span>Types de Données</span>
+                        </li>
+                        <li class="lesson-item"><a href="1-5-operateurs.html"><span
+                                    class="lesson-num">1.5</span><span>Opérateurs</span></a></li>
+                        <li class="lesson-item"><a href="1-6-conditions.html"><span
+                                    class="lesson-num">1.6</span><span>Conditions</span></a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a><i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-1">Module 1</a><i class="fas fa-chevron-right"></i>
+                        <span>Leçon 1.4</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge beginner">Débutant</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 25 minutes</span>
+                    </div>
+                    <h1>Types de Données</h1>
+                    <p class="lesson-intro">En Lua, chaque valeur a un type. Découvrez les types fondamentaux et comment
+                        les utiliser.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-shapes"></i> Les types en Lua</h2>
+                    <p>Lua a <strong>8 types de base</strong>, mais nous allons nous concentrer sur les 4 plus courants
+                        :</p>
+
+                    <div class="cards-grid">
+                        <div class="mini-card">
+                            <div class="mini-card-icon" style="background: linear-gradient(135deg, #98c379, #56b6c2);">
+                                <i class="fas fa-font"></i></div>
+                            <h4>string</h4>
+                            <p>Texte, chaînes de caractères</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon" style="background: linear-gradient(135deg, #d19a66, #e06c75);">
+                                <i class="fas fa-hashtag"></i></div>
+                            <h4>number</h4>
+                            <p>Nombres (entiers et décimaux)</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon" style="background: linear-gradient(135deg, #c678dd, #e06c75);">
+                                <i class="fas fa-toggle-on"></i></div>
+                            <h4>boolean</h4>
+                            <p>true ou false</p>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-card-icon" style="background: linear-gradient(135deg, #5c6370, #3e4451);">
+                                <i class="fas fa-times-circle"></i></div>
+                            <h4>nil</h4>
+                            <p>Absence de valeur</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-font"></i> String (Texte)</h2>
+                    <p>Les strings représentent du texte. On les entoure de guillemets.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>strings.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">nom</span> = <span class="string">"Alex"</span>
+<span class="keyword">local</span> <span class="variable">message</span> = <span class="string">'Bonjour !'</span>
+<span class="keyword">local</span> <span class="variable">citation</span> = <span class="string">"Il a dit: 'Salut'"</span>
+
+<span class="comment">-- Strings multilignes</span>
+<span class="keyword">local</span> <span class="variable">texte</span> = <span class="string">[[
+Ceci est une string
+sur plusieurs lignes.
+Très pratique !
+]]</span>
+
+<span class="function">print</span>(<span class="variable">texte</span>)</code></pre>
+                    </div>
+
+                    <h3>Opérations sur les strings</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>string_ops.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">prenom</span> = <span class="string">"Jean"</span>
+<span class="keyword">local</span> <span class="variable">nom</span> = <span class="string">"Dupont"</span>
+
+<span class="comment">-- Concaténation</span>
+<span class="keyword">local</span> <span class="variable">nomComplet</span> = <span class="variable">prenom</span> .. <span class="string">" "</span> .. <span class="variable">nom</span>
+<span class="function">print</span>(<span class="variable">nomComplet</span>)  <span class="comment">-- Jean Dupont</span>
+
+<span class="comment">-- Longueur d'une string</span>
+<span class="function">print</span>(#<span class="variable">prenom</span>)  <span class="comment">-- 4</span>
+
+<span class="comment">-- Fonctions utiles</span>
+<span class="function">print</span>(<span class="variable">string</span>.<span class="function">upper</span>(<span class="variable">prenom</span>))  <span class="comment">-- JEAN</span>
+<span class="function">print</span>(<span class="variable">string</span>.<span class="function">lower</span>(<span class="variable">prenom</span>))  <span class="comment">-- jean</span>
+<span class="function">print</span>(<span class="variable">string</span>.<span class="function">len</span>(<span class="variable">prenom</span>))   <span class="comment">-- 4</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-hashtag"></i> Number (Nombre)</h2>
+                    <p>Lua n'a qu'un seul type de nombre qui gère les entiers ET les décimaux.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>numbers.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">entier</span> = <span class="number">42</span>
+<span class="keyword">local</span> <span class="variable">decimal</span> = <span class="number">3.14159</span>
+<span class="keyword">local</span> <span class="variable">negatif</span> = <span class="number">-100</span>
+<span class="keyword">local</span> <span class="variable">scientifique</span> = <span class="number">1e6</span>  <span class="comment">-- 1000000</span>
+
+<span class="comment">-- Opérations mathématiques</span>
+<span class="function">print</span>(<span class="number">10</span> + <span class="number">5</span>)   <span class="comment">-- Addition: 15</span>
+<span class="function">print</span>(<span class="number">10</span> - <span class="number">5</span>)   <span class="comment">-- Soustraction: 5</span>
+<span class="function">print</span>(<span class="number">10</span> * <span class="number">5</span>)   <span class="comment">-- Multiplication: 50</span>
+<span class="function">print</span>(<span class="number">10</span> / <span class="number">5</span>)   <span class="comment">-- Division: 2</span>
+<span class="function">print</span>(<span class="number">10</span> % <span class="number">3</span>)   <span class="comment">-- Modulo (reste): 1</span>
+<span class="function">print</span>(<span class="number">2</span> ^ <span class="number">3</span>)    <span class="comment">-- Puissance: 8</span>
+
+<span class="comment">-- Fonctions mathématiques</span>
+<span class="function">print</span>(<span class="variable">math</span>.<span class="function">floor</span>(<span class="number">3.7</span>))   <span class="comment">-- Arrondi inf: 3</span>
+<span class="function">print</span>(<span class="variable">math</span>.<span class="function">ceil</span>(<span class="number">3.2</span>))    <span class="comment">-- Arrondi sup: 4</span>
+<span class="function">print</span>(<span class="variable">math</span>.<span class="function">abs</span>(<span class="number">-10</span>))     <span class="comment">-- Valeur absolue: 10</span>
+<span class="function">print</span>(<span class="variable">math</span>.<span class="function">random</span>(<span class="number">1</span>, <span class="number">100</span>)) <span class="comment">-- Nombre aléatoire</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-toggle-on"></i> Boolean (Vrai/Faux)</h2>
+                    <p>Les booleans n'ont que deux valeurs possibles : <code>true</code> ou <code>false</code>.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>booleans.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">estVivant</span> = <span class="keyword">true</span>
+<span class="keyword">local</span> <span class="variable">aPerdu</span> = <span class="keyword">false</span>
+<span class="keyword">local</span> <span class="variable">estAdmin</span> = <span class="keyword">true</span>
+
+<span class="comment">-- Les comparaisons retournent des booleans</span>
+<span class="keyword">local</span> <span class="variable">age</span> = <span class="number">18</span>
+<span class="function">print</span>(<span class="variable">age</span> >= <span class="number">18</span>)   <span class="comment">-- true</span>
+<span class="function">print</span>(<span class="variable">age</span> == <span class="number">21</span>)   <span class="comment">-- false</span>
+<span class="function">print</span>(<span class="variable">age</span> ~= <span class="number">18</span>)   <span class="comment">-- false (différent de)</span>
+
+<span class="comment">-- Utilisation dans les conditions</span>
+<span class="keyword">if</span> <span class="variable">estVivant</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"Le joueur est en vie !"</span>)
+<span class="keyword">end</span></code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+                        <div class="info-content">
+                            <h4>Truthiness en Lua</h4>
+                            <p>En Lua, seuls <code>false</code> et <code>nil</code> sont "faux". Tout le reste est
+                                "vrai", même <code>0</code> et <code>""</code> !</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-times-circle"></i> Nil (Rien)</h2>
+                    <p><code>nil</code> représente l'absence de valeur ou une valeur inexistante.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>nil.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">x</span>  <span class="comment">-- Pas de valeur assignée = nil</span>
+<span class="function">print</span>(<span class="variable">x</span>)  <span class="comment">-- nil</span>
+
+<span class="keyword">local</span> <span class="variable">score</span> = <span class="number">100</span>
+<span class="variable">score</span> = <span class="keyword">nil</span>  <span class="comment">-- "Effacer" la valeur</span>
+<span class="function">print</span>(<span class="variable">score</span>)  <span class="comment">-- nil</span>
+
+<span class="comment">-- Vérifier si nil</span>
+<span class="keyword">if</span> <span class="variable">x</span> == <span class="keyword">nil</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"x n'a pas de valeur"</span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- Utilisation courante</span>
+<span class="keyword">local</span> <span class="variable">joueur</span> = <span class="keyword">nil</span>  <span class="comment">-- Sera défini plus tard</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-search"></i> Vérifier le type</h2>
+                    <p>Utilisez <code>type()</code> pour connaître le type d'une valeur :</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>typeof.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="function">print</span>(<span class="function">type</span>(<span class="string">"Hello"</span>))   <span class="comment">-- string</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="number">42</span>))        <span class="comment">-- number</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="number">3.14</span>))      <span class="comment">-- number</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="keyword">true</span>))      <span class="comment">-- boolean</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="keyword">nil</span>))       <span class="comment">-- nil</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="function">print</span>))     <span class="comment">-- function</span>
+
+<span class="comment">-- Vérification de type</span>
+<span class="keyword">local</span> <span class="variable">valeur</span> = <span class="string">"test"</span>
+<span class="keyword">if</span> <span class="function">type</span>(<span class="variable">valeur</span>) == <span class="string">"string"</span> <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">"C'est une string !"</span>)
+<span class="keyword">end</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-exchange-alt"></i> Conversion de types</h2>
+                    <p>Parfois il faut convertir entre les types :</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>conversion.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i>
+                                Copier</button>
+                        </div>
+                        <pre><code><span class="comment">-- String vers Number</span>
+<span class="keyword">local</span> <span class="variable">texte</span> = <span class="string">"42"</span>
+<span class="keyword">local</span> <span class="variable">nombre</span> = <span class="function">tonumber</span>(<span class="variable">texte</span>)
+<span class="function">print</span>(<span class="variable">nombre</span> + <span class="number">8</span>)  <span class="comment">-- 50</span>
+
+<span class="comment">-- Number vers String</span>
+<span class="keyword">local</span> <span class="variable">num</span> = <span class="number">100</span>
+<span class="keyword">local</span> <span class="variable">str</span> = <span class="function">tostring</span>(<span class="variable">num</span>)
+<span class="function">print</span>(<span class="string">"Score: "</span> .. <span class="variable">str</span>)  <span class="comment">-- Score: 100</span>
+
+<span class="comment">-- Conversion implicite</span>
+<span class="function">print</span>(<span class="string">"Age: "</span> .. <span class="number">16</span>)  <span class="comment">-- Lua convertit auto</span></code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li><code>string</code> : texte entre guillemets</li>
+                            <li><code>number</code> : tous les nombres (entiers et décimaux)</li>
+                            <li><code>boolean</code> : true ou false</li>
+                            <li><code>nil</code> : absence de valeur</li>
+                            <li><code>type()</code> : retourne le type d'une valeur</li>
+                            <li><code>tonumber()</code> et <code>tostring()</code> : conversion</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="1-3-variables.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 1.3 Les Variables</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="1-5-operateurs.html">
+                            <span>Leçon suivante</span>
+                            <strong>1.5 Opérateurs <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="1-4">
+                        <i class="fas fa-check-circle"></i> Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

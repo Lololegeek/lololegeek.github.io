@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Roadmap d'apprentissage Lua/Luau - Votre chemin vers la maîtrise du développement Roblox">
+    <title>Roadmap - LuaMaster</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/roadmap.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="courses.html" class="nav-link">Cours</a></li>
+                <li><a href="editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="roadmap.html" class="nav-link active">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <span class="page-badge"><i class="fas fa-map"></i> Votre Parcours</span>
+                <h1>Roadmap <span class="gradient-text">d'Apprentissage</span></h1>
+                <p>Suivez ce chemin structuré pour devenir un développeur Roblox accompli</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Content -->
+    <section class="roadmap-section">
+        <div class="roadmap-bg-glows">
+            <div class="glow-1"></div>
+            <div class="glow-2"></div>
+        </div>
+        <div class="container">
+            <div class="roadmap-container">
+                <!-- Dynamic Progress Bar -->
+                <div class="roadmap-progress-bar" id="roadmap-progress"></div>
+
+                <!-- Phase 1 -->
+                <div class="roadmap-phase" id="phase-1">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <div class="phase-info">
+                            <span class="phase-duration"><i class="fas fa-clock"></i> 1-2 semaines</span>
+                            <h2>Les Fondamentaux</h2>
+                            <p>Maîtrisez les bases essentielles du langage Lua</p>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="skill-track">
+                            <div class="skill-node" data-skill="print">
+                                <div class="node-icon"><i class="fas fa-terminal"></i></div>
+                                <div class="node-content">
+                                    <h4>print() et Console</h4>
+                                    <p>Afficher du texte et débugger</p>
+                                </div>
+                                <div class="node-status"></div>
+                            </div>
+                            <div class="skill-node" data-skill="variables">
+                                <div class="node-icon"><i class="fas fa-box"></i></div>
+                                <div class="node-content">
+                                    <h4>Variables & Types</h4>
+                                    <p>string, number, boolean, nil</p>
+                                </div>
+                                <div class="node-status"></div>
+                            </div>
+                            <div class="skill-node" data-skill="operators">
+                                <div class="node-icon"><i class="fas fa-calculator"></i></div>
+                                <div class="node-content">
+                                    <h4>Opérateurs</h4>
+                                    <p>Arithmétiques, comparaison, logiques</p>
+                                </div>
+                                <div class="node-status"></div>
+                            </div>
+                            <div class="skill-node" data-skill="conditions">
+                                <div class="node-icon"><i class="fas fa-code-branch"></i></div>
+                                <div class="node-content">
+                                    <h4>Conditions</h4>
+                                    <p>if, elseif, else, and, or, not</p>
+                                </div>
+                                <div class="node-status"></div>
+                            </div>
+                        </div>
+                        <a href="courses.html#module-1" class="phase-cta">
+                            <i class="fas fa-arrow-right"></i> Voir les cours
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="roadmap-phase" id="phase-2">
+                <div class="phase-header">
+                    <div class="phase-number">2</div>
+                    <div class="phase-info">
+                        <span class="phase-duration"><i class="fas fa-clock"></i> 2-3 semaines</span>
+                        <h2>Contrôle de Flux</h2>
+                        <p>Apprenez à créer des programmes plus complexes</p>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="skill-track">
+                        <div class="skill-node" data-skill="while">
+                            <div class="node-icon"><i class="fas fa-sync"></i></div>
+                            <div class="node-content">
+                                <h4>Boucle while</h4>
+                                <p>Répéter tant que vrai</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="for">
+                            <div class="node-icon"><i class="fas fa-redo"></i></div>
+                            <div class="node-content">
+                                <h4>Boucle for</h4>
+                                <p>Itérer un nombre précis de fois</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="functions">
+                            <div class="node-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="node-content">
+                                <h4>Fonctions</h4>
+                                <p>Créer du code réutilisable</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="scope">
+                            <div class="node-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="node-content">
+                                <h4>Scope & Closures</h4>
+                                <p>Portée des variables</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                    </div>
+                    <a href="courses.html#module-2" class="phase-cta">
+                        <i class="fas fa-arrow-right"></i> Voir les cours
+                    </a>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="roadmap-phase" id="phase-3">
+                <div class="phase-header">
+                    <div class="phase-number">3</div>
+                    <div class="phase-info">
+                        <span class="phase-duration"><i class="fas fa-clock"></i> 2-3 semaines</span>
+                        <h2>Structures de Données</h2>
+                        <p>Organisez vos données efficacement</p>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="skill-track">
+                        <div class="skill-node" data-skill="arrays">
+                            <div class="node-icon"><i class="fas fa-list-ol"></i></div>
+                            <div class="node-content">
+                                <h4>Arrays</h4>
+                                <p>Listes ordonnées</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="dicts">
+                            <div class="node-icon"><i class="fas fa-book"></i></div>
+                            <div class="node-content">
+                                <h4>Dictionnaires</h4>
+                                <p>Paires clé-valeur</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="iteration">
+                            <div class="node-icon"><i class="fas fa-random"></i></div>
+                            <div class="node-content">
+                                <h4>ipairs & pairs</h4>
+                                <p>Parcourir les tables</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="roadmap-phase highlight" id="phase-4">
+                <div class="phase-header">
+                    <div class="phase-number">4</div>
+                    <div class="phase-info">
+                        <span class="phase-duration"><i class="fas fa-clock"></i> 3-4 semaines</span>
+                        <h2>API Roblox</h2>
+                        <p>Plongez dans le développement Roblox Studio</p>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="skill-track">
+                        <div class="skill-node" data-skill="instances">
+                            <div class="node-icon"><i class="fas fa-cube"></i></div>
+                            <div class="node-content">
+                                <h4>Instances</h4>
+                                <p>Objets Roblox</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="services">
+                            <div class="node-icon"><i class="fas fa-server"></i></div>
+                            <div class="node-content">
+                                <h4>Services</h4>
+                                <p>Players, Workspace...</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="events">
+                            <div class="node-icon"><i class="fas fa-bell"></i></div>
+                            <div class="node-content">
+                                <h4>Events</h4>
+                                <p>Réagir aux actions</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="remotes">
+                            <div class="node-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="node-content">
+                                <h4>RemoteEvents</h4>
+                                <p>Client ↔ Serveur</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="roadmap-phase final" id="phase-5">
+                <div class="phase-header">
+                    <div class="phase-number"><i class="fas fa-trophy"></i></div>
+                    <div class="phase-info">
+                        <span class="phase-duration"><i class="fas fa-clock"></i> 4+ semaines</span>
+                        <h2>Projets & Maîtrise</h2>
+                        <p>Créez de vrais projets et perfectionnez vos compétences</p>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="skill-track">
+                        <div class="skill-node" data-skill="project-inv">
+                            <div class="node-icon"><i class="fas fa-box-open"></i></div>
+                            <div class="node-content">
+                                <h4>Système d'Inventaire</h4>
+                                <p>Persistance et UI</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                        <div class="skill-node" data-skill="project-combat">
+                            <div class="node-icon"><i class="fas fa-fist-raised"></i></div>
+                            <div class="node-content">
+                                <h4>Système de Combat</h4>
+                                <p>Raycasting et Animations</p>
+                            </div>
+                            <div class="node-status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="roadmap-tips">
+            <h3><i class="fas fa-lightbulb"></i> Conseils pour réussir</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-code"></i></div>
+                    <h4>Pratiquez quotidiennement</h4>
+                    <p>30 minutes par jour valent mieux que 4 heures une fois par semaine.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-bug"></i></div>
+                    <h4>Embrassez les erreurs</h4>
+                    <p>Chaque bug est une opportunité d'apprendre quelque chose de nouveau.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h4>Créez des projets</h4>
+                    <p>La théorie c'est bien, mais rien ne vaut la pratique sur de vrais projets.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-users"></i></div>
+                    <h4>Rejoignez la communauté</h4>
+                    <p>Discord, forums Roblox... N'hésitez pas à poser des questions !</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-bottom">© 2026 LuaMaster. Fait avec <i class="fas fa-heart"></i> pour les futurs
+                développeurs Roblox.</p>
+        </div>
+    </footer>
+
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/roadmap.js"></script>
+</body>
+
+</html>

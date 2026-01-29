@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Éditeur de code Lua en ligne - Pratiquez le Lua directement dans votre navigateur">
+    <title>Éditeur Lua - LuaMaster</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="courses.html" class="nav-link">Cours</a></li>
+                <li><a href="editor.html" class="nav-link active">Éditeur</a></li>
+                <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Editor Container -->
+    <main class="editor-page">
+        <div class="editor-container">
+            <!-- Sidebar -->
+            <aside class="editor-sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-folder-open"></i> Exemples</h3>
+                    <ul class="examples-list">
+                        <li class="example-item active" data-example="hello">
+                            <i class="fas fa-file-code"></i>
+                            <span>Hello World</span>
+                        </li>
+                        <li class="example-item" data-example="variables">
+                            <i class="fas fa-file-code"></i>
+                            <span>Variables</span>
+                        </li>
+                        <li class="example-item" data-example="conditions">
+                            <i class="fas fa-file-code"></i>
+                            <span>Conditions</span>
+                        </li>
+                        <li class="example-item" data-example="loops">
+                            <i class="fas fa-file-code"></i>
+                            <span>Boucles</span>
+                        </li>
+                        <li class="example-item" data-example="functions">
+                            <i class="fas fa-file-code"></i>
+                            <span>Fonctions</span>
+                        </li>
+                        <li class="example-item" data-example="tables">
+                            <i class="fas fa-file-code"></i>
+                            <span>Tables</span>
+                        </li>
+                        <li class="example-item" data-example="roblox">
+                            <i class="fas fa-file-code"></i>
+                            <span>Roblox Basics</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-lightbulb"></i> Conseils</h3>
+                    <div class="tips-content">
+                        <p>Utilisez <kbd>Ctrl</kbd> + <kbd>Enter</kbd> pour exécuter le code rapidement.</p>
+                        <p>Les erreurs s'afficheront en rouge dans la console.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Editor -->
+            <div class="editor-main">
+                <!-- Toolbar -->
+                <div class="editor-toolbar">
+                    <div class="toolbar-left">
+                        <div class="file-tab active">
+                            <i class="fas fa-file-code"></i>
+                            <span>script.lua</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-actions">
+                        <button class="toolbar-btn" id="btn-clear" title="Effacer">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="toolbar-btn" id="btn-copy" title="Copier">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="toolbar-btn" id="btn-format" title="Formater">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        <button class="run-button" id="btn-run">
+                            <i class="fas fa-play"></i>
+                            <span>Exécuter</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Code Editor Area -->
+                <div class="editor-wrapper" id="monaco-editor-container"></div>
+
+                <!-- Console -->
+                <div class="console-panel">
+                    <div class="console-header">
+                        <div class="console-title">
+                            <i class="fas fa-terminal"></i>
+                            <span>Console</span>
+                        </div>
+                        <button class="console-clear" id="btn-clear-console" title="Effacer la console">
+                            <i class="fas fa-broom"></i>
+                        </button>
+                    </div>
+                    <div class="console-output" id="console-output">
+                        <p class="console-welcome">
+                            <span class="console-info">ℹ</span>
+                            Bienvenue dans l'éditeur Lua ! Écrivez votre code et cliquez sur "Exécuter" pour voir le
+                            résultat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Fengari - Lua interpreter for JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/fengari-web@0.1.4/dist/fengari-web.min.js"></script>
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+
+</html>

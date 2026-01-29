@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ClickDetector Roblox - Rendez vos objets interactifs">
+    <title>5.2 ClickDetector - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 5 : Projets Pratiques</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="5-1-leaderstats.html">
+                                <span class="lesson-num">5.1</span>
+                                <span>Leaderstats</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item active">
+                            <span class="lesson-num">5.2</span>
+                            <span>ClickDetector</span>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-3-obby.html">
+                                <span class="lesson-num">5.3</span>
+                                <span>Obby Basique</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-4-shop.html">
+                                <span class="lesson-num">5.4</span>
+                                <span>Boutique</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="5-5-datastore.html">
+                                <span class="lesson-num">5.5</span>
+                                <span>DataStore</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-5">Module 5</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 5.2</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge project">Projet</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 15 minutes</span>
+                    </div>
+                    <h1>ClickDetector : Objets Interactifs</h1>
+                    <p class="lesson-intro">Apprenez à rendre vos objets cliquables ! Créez des boutons, des portes qui
+                        s'ouvrent, des objets à ramasser et plus encore.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-mouse-pointer"></i> Ajouter un ClickDetector</h2>
+                    <p>
+                        Le <strong>ClickDetector</strong> est un objet spécial qui permet de détecter quand un joueur
+                        clique sur une Part avec sa souris.
+                    </p>
+                    <div class="steps-list">
+                        <ol>
+                            <li>Créez une <strong>Part</strong> dans le Workspace</li>
+                            <li>Cliquez sur le <strong>+</strong> à côté de la Part</li>
+                            <li>Cherchez et ajoutez <strong>ClickDetector</strong></li>
+                            <li>Ajoutez aussi un <strong>Script</strong> dans la Part</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-code"></i> Script de Base</h2>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>bouton_simple.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">part</span> = <span class="variable">script</span>.<span class="variable">Parent</span>
+<span class="keyword">local</span> <span class="variable">clickDetector</span> = <span class="variable">part</span>.<span class="variable">ClickDetector</span>
+
+<span class="comment">-- Fonction appelée au clic</span>
+<span class="keyword">local</span> <span class="keyword">function</span> <span class="function">onClick</span>(<span class="variable">player</span>)
+    <span class="function">print</span>(<span class="variable">player</span>.<span class="variable">Name</span> .. <span class="string">" a cliqué !"</span>)
+    
+    <span class="comment">-- Changer la couleur aléatoirement</span>
+    <span class="variable">part</span>.<span class="variable">BrickColor</span> = <span class="function">BrickColor.Random</span>()
+<span class="keyword">end</span>
+
+<span class="comment">-- Connexion</span>
+<span class="variable">clickDetector</span>.<span class="variable">MouseClick</span>:<span class="function">Connect</span>(<span class="variable">onClick</span>)</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="info-content">
+                            <h4>Qui clique ?</h4>
+                            <p>L'événement <code>MouseClick</code> donne toujours le <strong>Player</strong> qui a
+                                cliqué comme premier paramètre. Très utile pour donner de l'argent ou des objets !</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-door-open"></i> Exemple : Une Porte</h2>
+                    <p>Voici comment créer une porte qui s'ouvre et se ferme au clic :</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>porte.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">porte</span> = <span class="variable">script</span>.<span class="variable">Parent</span>
+<span class="keyword">local</span> <span class="variable">clickDetector</span> = <span class="variable">porte</span>.<span class="variable">ClickDetector</span>
+<span class="keyword">local</span> <span class="variable">ouverte</span> = <span class="keyword">false</span>
+
+<span class="variable">clickDetector</span>.<span class="variable">MouseClick</span>:<span class="function">Connect</span>(<span class="keyword">function</span>()
+    <span class="keyword">if</span> <span class="variable">ouverte</span> <span class="keyword">then</span>
+        <span class="comment">-- Fermer la porte</span>
+        <span class="variable">porte</span>.<span class="variable">Transparency</span> = <span class="number">0</span>
+        <span class="variable">porte</span>.<span class="variable">CanCollide</span> = <span class="keyword">true</span>
+        <span class="variable">ouverte</span> = <span class="keyword">false</span>
+    <span class="keyword">else</span>
+        <span class="comment">-- Ouvrir la porte (invisible et traversable)</span>
+        <span class="variable">porte</span>.<span class="variable">Transparency</span> = <span class="number">0.7</span>
+        <span class="variable">porte</span>.<span class="variable">CanCollide</span> = <span class="keyword">false</span>
+        <span class="variable">ouverte</span> = <span class="keyword">true</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>)</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-coins"></i> Exemple : Gagner des Points</h2>
+                    <p>Combinons ClickDetector et Leaderstats !</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>piece_a_ramasser.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">piece</span> = <span class="variable">script</span>.<span class="variable">Parent</span>
+<span class="keyword">local</span> <span class="variable">cd</span> = <span class="variable">piece</span>.<span class="variable">ClickDetector</span>
+
+<span class="variable">cd</span>.<span class="variable">MouseClick</span>:<span class="function">Connect</span>(<span class="keyword">function</span>(<span class="variable">player</span>)
+    <span class="comment">-- Vérifier les leaderstats</span>
+    <span class="keyword">local</span> <span class="variable">stats</span> = <span class="variable">player</span>:<span class="function">FindFirstChild</span>(<span class="string">"leaderstats"</span>)
+    <span class="keyword">if</span> <span class="variable">stats</span> <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="variable">coins</span> = <span class="variable">stats</span>:<span class="function">FindFirstChild</span>(<span class="string">"Coins"</span>)
+        <span class="keyword">if</span> <span class="variable">coins</span> <span class="keyword">then</span>
+            <span class="variable">coins</span>.<span class="variable">Value</span> = <span class="variable">coins</span>.<span class="variable">Value</span> + <span class="number">10</span>
+            
+            <span class="comment">-- Détruire la pièce</span>
+            <span class="variable">piece</span>:<span class="function">Destroy</span>()
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>)</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li>Ajouter un objet <strong>ClickDetector</strong> dans une Part</li>
+                            <li>Utiliser l'event <code>MouseClick</code></li>
+                            <li>Le paramètre player permet de savoir qui a cliqué</li>
+                            <li>Autres events : <code>MouseHoverEnter</code>, <code>MouseHoverLeave</code></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="5-1-leaderstats.html">
+                            <span>Leçon précédente</span>
+                            <strong><i class="fas fa-arrow-left"></i> 5.1 Leaderstats</strong>
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="5-3-obby.html">
+                            <span>Leçon suivante</span>
+                            <strong>5.3 Obby Basique <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="5-2">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

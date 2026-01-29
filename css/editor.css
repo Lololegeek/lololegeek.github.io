@@ -1,0 +1,373 @@
+/* Editor Page Styles */
+
+.editor-page {
+    padding-top: 70px;
+    height: 100vh;
+    display: flex;
+}
+
+.editor-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.editor-sidebar {
+    width: 260px;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-section {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.sidebar-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-section h3 i {
+    font-size: 0.85rem;
+}
+
+.examples-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.example-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.example-item:hover {
+    background: var(--bg-glass);
+    color: var(--text-primary);
+}
+
+.example-item.active {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--primary-light);
+}
+
+.example-item i {
+    font-size: 0.85rem;
+    color: var(--primary);
+}
+
+.tips-content {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.tips-content p {
+    margin-bottom: 12px;
+}
+
+.tips-content kbd {
+    display: inline-block;
+    padding: 3px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+/* Main Editor */
+.editor-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Toolbar */
+.editor-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.toolbar-left {
+    display: flex;
+    gap: 8px;
+}
+
+.file-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--bg-secondary);
+    border-radius: 8px 8px 0 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.file-tab.active {
+    color: var(--text-primary);
+    background: var(--bg-primary);
+}
+
+.file-tab i {
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+.toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toolbar-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.toolbar-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+.toolbar-btn.ai-help-btn {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--primary);
+}
+
+.toolbar-btn.ai-help-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.run-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: var(--secondary);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: var(--transition-fast);
+}
+
+.run-button:hover {
+    background: #059669;
+    transform: translateY(-1px);
+}
+
+.run-button i {
+    font-size: 0.8rem;
+}
+
+/* Editor Wrapper */
+.editor-wrapper {
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+/* Monaco Editor Container */
+#monaco-editor-container {
+    flex: 1;
+    height: 100%;
+    position: relative;
+}
+
+/* Monaco Editor Custom Styles */
+.monaco-editor {
+    font-family: var(--font-mono) !important;
+    font-size: 0.9rem !important;
+    background: var(--bg-primary) !important;
+}
+
+.monaco-editor .lines-content {
+    font-family: var(--font-mono) !important;
+}
+
+.monaco-editor .margin-view-overlays {
+    background: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border-light) !important;
+}
+
+.monaco-editor .line-numbers {
+    color: var(--text-muted) !important;
+    font-family: var(--font-mono) !important;
+    padding: 0 8px !important;
+}
+
+.monaco-editor .cursors-layer .cursor {
+    border-left-color: var(--primary) !important;
+}
+
+.monaco-editor .cursors-layer .secondary-cursor {
+    border-left-color: rgba(99, 102, 241, 0.5) !important;
+}
+
+.monaco-editor .selection {
+    background: rgba(99, 102, 241, 0.2) !important;
+}
+
+.monaco-editor .current-line {
+    background: rgba(99, 102, 241, 0.05) !important;
+}
+
+/* Scrollbar styling for Monaco */
+.monaco-scrollable-element::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.monaco-scrollable-element::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+.monaco-scrollable-element::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.monaco-scrollable-element::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Console */
+.console-panel {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.console-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.console-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.console-clear {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    border-radius: 6px;
+    transition: var(--transition-fast);
+}
+
+.console-clear:hover {
+    background: var(--bg-glass);
+    color: var(--text-primary);
+}
+
+.console-output {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.console-output p {
+    margin-bottom: 4px;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.console-output .console-welcome {
+    color: var(--text-secondary);
+    background: var(--bg-glass);
+}
+
+.console-output .console-success {
+    color: var(--secondary);
+}
+
+.console-output .console-error {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.console-output .console-info {
+    color: var(--primary-light);
+}
+
+.console-output .console-warn {
+    color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .editor-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .toolbar-btn span {
+        display: none;
+    }
+
+    .run-button span {
+        display: none;
+    }
+
+    .run-button {
+        padding: 8px 12px;
+    }
+}
