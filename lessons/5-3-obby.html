@@ -98,6 +98,14 @@
                     <p class="lesson-intro">Les Obbys (parcours d'obstacles) sont les jeux les plus populaires sur
                         Roblox. Apprenez à programmer les éléments essentiels : la lave qui tue et les points de
                         sauvegarde.</p>
+                    <div class="warning-box">
+                        <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="warning-content">
+                            <h4>Roblox Studio Requis</h4>
+                            <p>Cette leçon utilise l'API de Roblox. Ce code ne fonctionnera <strong>que</strong> dans
+                                Roblox Studio ou notre éditeur intégré, et non sur un interpréteur Lua PC standard.</p>
+                        </div>
+                    </div>
                 </header>
 
                 <section class="lesson-section">
@@ -236,7 +244,8 @@
                     <div class="summary-content">
                         <ul>
                             <li><strong>KillBrick</strong> : Utilise <code>Touched</code> et met
-                                <code>Humanoid.Health = 0</code></li>
+                                <code>Humanoid.Health = 0</code>
+                            </li>
                             <li><strong>Checkpoints</strong> : Utilisent une valeur "Stage" dans les leaderstats</li>
                             <li><strong>CharacterAdded</strong> : Event qui se lance quand le joueur respawn</li>
                             <li><strong>MoveTo</strong> : Fonction pour téléporter un Model (le personnage)</li>

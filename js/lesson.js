@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const isCurrentFinished = Progress.get('lesson_' + lessonId);
 
             if (!isCurrentFinished) {
+                // Save the original href before locking
+                nextLink.dataset.originalHref = nextLink.href;
                 nextLink.classList.add('locked-link');
                 nextLink.href = 'javascript:void(0)';
                 nextLink.style.opacity = '0.6';
@@ -663,6 +665,31 @@ function markAsCompleted(btn) {
     btn.innerHTML = '<i class="fas fa-check-circle"></i> Complété ! <span class="uncomplete-hint">(Cliquer pour annuler)</span>';
     btn.classList.add('completed');
     btn.classList.remove('needs-quiz');
+    unlockNextButton();
+}
+
+function unlockNextButton() {
+    const nextLink = document.querySelector('.nav-next a');
+    if (nextLink && nextLink.classList.contains('locked-link')) {
+        nextLink.classList.remove('locked-link');
+        nextLink.style.opacity = '';
+        nextLink.style.cursor = '';
+
+        // Restore original href from saved data attribute
+        if (nextLink.dataset.originalHref) {
+            nextLink.href = nextLink.dataset.originalHref;
+        }
+
+        // Remove lock icon
+        const lockIcon = nextLink.querySelector('.fa-lock');
+        if (lockIcon) {
+            lockIcon.remove();
+        }
+
+        // Clone and replace to remove event listeners
+        const newLink = nextLink.cloneNode(true);
+        nextLink.parentNode.replaceChild(newLink, nextLink);
+    }
 }
 
 function markAsIncomplete(btn, lessonId) {
@@ -1319,8 +1346,13 @@ function continueAfterQuiz() {
     // Update complete button
     const btn = document.getElementById('complete-lesson');
     if (btn) {
-        btn.innerHTML = '<i class="fas fa-check-circle"></i> Marquer comme terminé';
-        btn.classList.remove('needs-quiz');
+        const lessonId = btn.getAttribute('data-lesson');
+        
+        // Save lesson completion immediately
+        Progress.set('lesson_' + lessonId, true);
+        
+        // Update UI to completed state
+        markAsCompleted(btn);
     }
 
     showConfetti();

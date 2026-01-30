@@ -161,10 +161,6 @@ print("Hello " .. player.Name .. "!")`;
         typeWriter(codeElement, codeText, 0);
     }
 
-    // 5. Inject Quiz Widget automatically on lesson pages
-    if (document.querySelector('.lesson-page')) {
-        injectQuizWidget();
-    }
 });
 
 function animateValue(obj, start, end, duration) {
@@ -215,24 +211,4 @@ function hljsHighlight(el) {
     el.innerHTML = html;
 }
 
-function injectQuizWidget() {
-    // Charger le script JS
-    const script = document.createElement('script');
-    script.src = '../js/quiz-widget.js';
-    if (!location.pathname.includes('/lessons/')) script.src = 'js/quiz-widget.js';
-    document.body.appendChild(script);
 
-    // Injecter le CSS
-    const style = document.createElement('style');
-    style.textContent = `
-        .quiz-widget { background: rgba(0,0,0,0.2); padding: 25px; border-radius: 12px; border: 1px solid var(--primary); margin-top: 40px; }
-        .quiz-widget h3 { color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .qw-item { margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
-        .qw-item:last-child { border-bottom: none; }
-        .qw-item p { font-weight: 600; font-size: 1.1rem; margin-bottom: 15px; color: var(--text-primary); }
-        .qw-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
-        .btn-opt { padding: 12px 15px; background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-secondary); cursor: pointer; border-radius: 8px; transition: 0.2s; font-weight: 500; }
-        .btn-opt:hover { border-color: var(--primary); background: rgba(108, 92, 231, 0.1); color: white; }
-    `;
-    document.head.appendChild(style);
-}
