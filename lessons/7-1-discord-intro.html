@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Introduction à Discordia - Apprenez à créer votre premier bot Discord en Lua">
+    <title>7.1 Intro à Discordia - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Lesson Content -->
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <!-- Sidebar Navigation -->
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 7 : Bots Discord</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item active">
+                            <span class="lesson-num">7.1</span>
+                            <span>Intro à Discordia</span>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="7-2-events-discord.html">
+                                <span class="lesson-num">7.2</span>
+                                <span>Événements Discord</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="7-3-commands-discord.html">
+                                <span class="lesson-num">7.3</span>
+                                <span>Commandes Avancées</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-7">Module 7</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 7.1</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge expert">Expert</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 20 minutes</span>
+                    </div>
+                    <h1>Introduction à Discordia</h1>
+                    <p class="lesson-intro">Apprenez à utiliser la librairie Discordia pour créer des bots Discord
+                        puissants en Lua.</p>
+                </header>
+
+                <section class="lesson-section">
+                    <h2><i class="fab fa-discord"></i> Pourquoi faire un bot en Lua ?</h2>
+                    <p>
+                        Bien que le JavaScript (discord.js) soit très populaire, le <strong>Lua</strong> est une
+                        alternative fantastique pour créer des bots Discord grâce à sa rapidité et sa consommation de
+                        mémoire extrêmement faible.
+                    </p>
+                    <p>
+                        La librairie principale s'appelle <strong>Discordia</strong>. Elle est développée par
+                        SinisterRectus et permet d'interagir facilement avec l'API Discord.
+                    </p>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-tools"></i> Installation</h2>
+                    <p>Pour faire tourner un bot Lua, vous aurez besoin de :</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> <strong>Luvit</strong> - Un runtime pour Lua (semblable à
+                            Node.js pour JS)</li>
+                        <li><i class="fas fa-check"></i> <strong>Lit</strong> - Un gestionnaire de paquets pour Luvit
+                        </li>
+                        <li><i class="fas fa-check"></i> <strong>Discordia</strong> - La librairie elle-même</li>
+                    </ul>
+                    <p>Commande pour installer Discordia :</p>
+                    <div class="code-block">
+                        <pre><code>lit install SinisterRectus/discordia</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section">
+                    <h2><i class="fas fa-code"></i> Votre premier Bot : Ping-Pong</h2>
+                    <p>Voici le code minimal pour lancer un bot qui répond "Pong !" quand on lui dit "!ping" :</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>bot.lua</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">discordia</span> = <span class="function">require</span>(<span class="string">'discordia'</span>)
+<span class="keyword">local</span> <span class="variable">client</span> = <span class="variable">discordia</span>.<span class="function">Client</span>()
+
+<span class="variable">client</span>:<span class="function">on</span>(<span class="string">'messageCreate'</span>, <span class="keyword">function</span>(<span class="variable">message</span>)
+    <span class="keyword">if</span> <span class="variable">message</span>.<span class="variable">content</span> == <span class="string">'!ping'</span> <span class="keyword">then</span>
+        <span class="variable">message</span>:<span class="function">reply</span>(<span class="string">'Pong ! 🏓'</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>)
+
+<span class="variable">client</span>:<span class="function">run</span>(<span class="string">'Bot YOUR_TOKEN_HERE'</span>)</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-key"></i></div>
+                        <div class="info-content">
+                            <h4>Le Token</h4>
+                            <p>Ne partagez JAMAIS votre token de bot. C'est la clé de votre bot. Si quelqu'un l'a, il
+                                peut contrôler votre bot.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-clipboard-check"></i> Résumé</h2>
+                    <div class="summary-content">
+                        <ul>
+                            <li><strong>Discordia</strong> est la librairie Lua pour les bots Discord.</li>
+                            <li>On utilise <code>client:on('event', callback)</code> pour réagir aux événements.</li>
+                            <li><code>message:reply()</code> permet de répondre à un utilisateur.</li>
+                            <li><code>client:run()</code> lance la connexion avec Discord.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Navigation -->
+                <nav class="lesson-nav">
+                    <div class="nav-prev disabled">
+                        <span>Module précédent</span>
+                    </div>
+                    <div class="nav-next">
+                        <a href="7-2-events-discord.html">
+                            <span>Leçon suivante</span>
+                            <strong>7.2 Événements Discord <i class="fas fa-arrow-right"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- Complete Button -->
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="7-1">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>

@@ -4,147 +4,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Animations et Tweens dans Roblox - Apprenez à créer des transitions fluides">
     <title>6.5 Animations & Tweens - LuaMaster</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/lesson.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body class="dark-mode">
-    <nav class="navbar">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo">
                 <div class="logo-icon"><i class="fas fa-code"></i></div>
                 <span class="logo-text">Lua<span class="accent">Master</span></span>
             </a>
-            <div class="lesson-nav">
-                <a href="../courses.html" class="nav-link"><i class="fas fa-th-large"></i> Cours</a>
-                <a href="6-4-events.html" class="nav-link"><i class="fas fa-arrow-left"></i> Précédent</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
             </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <main class="lesson-container">
-        <header class="lesson-header">
-            <div class="container">
-                <span class="lesson-badge">Module 6 • Leçon 6.5</span>
-                <h1>Animations <span class="gradient-text">& Tweens</span></h1>
-                <p>Maîtrisez TweenService pour créer des transitions fluides et professionnelles.</p>
-                <div class="warning-box">
-                    <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                    <div class="warning-content">
-                        <h4>Roblox Studio Requis</h4>
-                        <p>Cette leçon utilise l'API de Roblox. Ce code ne fonctionnera <strong>que</strong> dans Roblox
-                            Studio ou notre éditeur intégré, et non sur un interpréteur Lua PC standard.</p>
-                    </div>
+    <!-- Lesson Content -->
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <!-- Sidebar Navigation -->
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
                 </div>
-            </div>
-        </header>
-
-        <section class="lesson-content">
-            <div class="container">
-                <!-- Concept 1: TweenService -->
-                <div class="content-card">
-                    <h2><i class="fas fa-running"></i> Qu'est-ce qu'un Tween ?</h2>
-                    <p>Un "Tween" est le fait de faire varier une propriété d'une <strong>Valeur A</strong> à une
-                        <strong>Valeur B</strong> de manière fluide sur un temps donné. Au lieu de changer
-                        instantanément la couleur d'un bouton, vous le faites dégradé doucement sur 0.5 seconde.
-                    </p>
-                </div>
-
-                <!-- Concept 2: TweenService Syntax -->
-                <div class="content-card">
-                    <h2><i class="fas fa-code"></i> Utiliser TweenService</h2>
-                    <p>Voici la structure standard d'un Tween :</p>
-                    <div class="code-block-header">
-                        <span>Animer une Frame</span>
-                        <button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button>
-                    </div>
-                    <pre><code>local TweenService = game:GetService("TweenService")
-local frame = script.Parent
-
--- 1. Les réglages (Temps, Style d'accélération)
-local info = TweenInfo.new(
-    0.5, -- Temps en secondes
-    Enum.EasingStyle.Quart, -- Style (Elastic, Bounce, Sine...)
-    Enum.EasingDirection.Out -- Direction
-)
-
--- 2. Les propriétés à atteindre
-local goal = {
-    Position = UDim2.new(0.5, 0, 0.5, 0), -- Centre de l'écran
-    BackgroundColor3 = Color3.fromRGB(255, 100, 100)
-}
-
--- 3. Création et lecture
-local tween = TweenService:Create(frame, info, goal)
-tween:Play()</code></pre>
-                </div>
-
-                <!-- Concept 3: Easing Styles -->
-                <div class="content-card">
-                    <h2><i class="fas fa-wave-square"></i> Easing Styles (Styles de courbe)</h2>
-                    <p>La fluidité dépend du style choisi :</p>
-                    <ul>
-                        <li><strong>Linear :</strong> Vitesse constante (un peu robotique).</li>
-                        <li><strong>Sine :</strong> Démarrage et arrêt plus doux.</li>
-                        <li><strong>Elastic/Bounce :</strong> Ajoute un effet de rebond très "cartoon".</li>
-                        <li><strong>Quart/Quint :</strong> Très professionnel, idéal pour les menus modernes.</li>
+                <div class="module-nav">
+                    <h3>Module 6 : Design UI</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="6-1-gui-basics.html">
+                                <span class="lesson-num">6.1</span>
+                                <span>Bases du GUI</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-2-elements.html">
+                                <span class="lesson-num">6.2</span>
+                                <span>Éléments UI</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-3-layouts.html">
+                                <span class="lesson-num">6.3</span>
+                                <span>Z-Index & Layouts</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-4-events.html">
+                                <span class="lesson-num">6.4</span>
+                                <span>Interactions</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item active">
+                            <span class="lesson-num">6.5</span>
+                            <span>Animations UI</span>
+                        </li>
                     </ul>
                 </div>
+            </aside>
 
-                <!-- Concept 4: Final Tips -->
-                <div class="content-card premium-card">
-                    <h2><i class="fas fa-gem"></i> La touche finale</h2>
-                    <p>Combinez tout ce que vous avez appris :</p>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <i class="fas fa-layer-group"></i>
-                            <h4>ZIndex</h4>
-                            <p>Assurez-vous que vos popups sont toujours devant les autres éléments.</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-eye-slash"></i>
-                            <h4>Visible vs Transparency</h4>
-                            <p>Animer la transparence pour une apparition douce, puis mettre
-                                <code>Visible = false</code> à la fin.
-                            </p>
-                        </div>
+            <!-- Main Content -->
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-6">Module 6</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 6.5</span>
                     </div>
-                </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge expert">Expert</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 25 minutes</span>
+                    </div>
+                    <h1>Animations & Tweens</h1>
+                    <p class="lesson-intro">Maîtrisez TweenService pour créer des transitions fluides et
+                        professionnelles.</p>
+                </header>
 
-                <!-- Quiz Widget -->
-                <div class="quiz-widget-anchor" id="lesson-quiz"></div>
-            </div>
-        </section>
+                <section class="lesson-section">
+                    <h2><i class="fas fa-running"></i> Qu'est-ce qu'un Tween ?</h2>
+                    <p>Un "Tween" permet de faire varier une propriété d'une Valeur A à une Valeur B de manière fluide
+                        sur un temps donné. C'est l'essence même des animations modernes.</p>
+                </section>
 
-        <footer class="lesson-footer-nav">
-            <div class="container">
-                <div class="nav-controls">
-                    <a href="6-4-events.html" class="footer-nav-btn prev">
-                        <i class="fas fa-arrow-left"></i>
-                        <div class="btn-text">
-                            <span>Précédent</span>
-                            <strong>Interactions & Événements</strong>
-                        </div>
-                    </a>
-                    <a href="../courses.html" class="footer-nav-btn next">
-                        <div class="btn-text">
-                            <span>Terminer</span>
-                            <strong>Retour aux cours</strong>
-                        </div>
-                        <i class="fas fa-check"></i>
-                    </a>
+                <section class="lesson-section">
+                    <h2><i class="fas fa-code"></i> Utiliser TweenService</h2>
+                    <p>Voici la structure standard d'un Tween :</p>
+                    <div class="code-block">
+                        <div class="code-header"><span>LocalScript</span></div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">TweenService</span> = <span class="variable">game</span>:<span class="function">GetService</span>(<span class="string">"TweenService"</span>)
+<span class="keyword">local</span> <span class="variable">frame</span> = <span class="variable">script</span>.<span class="variable">Parent</span>
+
+<span class="keyword">local</span> <span class="variable">info</span> = <span class="variable">TweenInfo</span>.<span class="function">new</span>(<span class="number">0.5</span>, <span class="variable">Enum</span>.<span class="variable">EasingStyle</span>.<span class="variable">Quart</span>)
+<span class="keyword">local</span> <span class="variable">goal</span> = { <span class="variable">BackgroundTransparency</span> = <span class="number">0</span> }
+
+<span class="keyword">local</span> <span class="variable">tween</span> = <span class="variable">TweenService</span>:<span class="function">Create</span>(<span class="variable">frame</span>, <span class="variable">info</span>, <span class="variable">goal</span>)
+<span class="variable">tween</span>:<span class="function">Play</span>()</code></pre>
+                    </div>
+                </section>
+
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-wave-square"></i> Easing Styles</h2>
+                    <p>La fluidité dépend du style choisi :</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> <strong>Linear :</strong> Vitesse constante.</li>
+                        <li><i class="fas fa-check"></i> <strong>Sine :</strong> Démarrage et arrêt doux.</li>
+                        <li><i class="fas fa-check"></i> <strong>Bounce :</strong> Effet de rebond.</li>
+                        <li><i class="fas fa-check"></i> <strong>Quart/Quint :</strong> Très fluide et moderne.</li>
+                    </ul>
+                </section>
+
+                <!-- Navigation -->
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="6-4-events.html">
+                            <i class="fas fa-arrow-left"></i> 6.4 Interactions
+                        </a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="../courses.html">
+                            <span>Module terminé !</span>
+                            <strong>Retour aux cours <i class="fas fa-check"></i></strong>
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- Complete Button -->
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="6-5">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
                 </div>
-            </div>
-        </footer>
+            </article>
+        </div>
     </main>
 
+    <script src="../js/ai-assistant.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/lesson.js"></script>
 </body>

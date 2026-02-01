@@ -2,6 +2,9 @@
 
 // Progress Tracking System
 window.Progress = {
+    // Variable pour désactiver la sécurité du cours (utile pour le dev)
+    DEBUG_DISABLE_LOCKS: false,
+
     get: function (key) {
         const data = localStorage.getItem('luaMasterProgress');
         if (!data) return false;
@@ -68,10 +71,13 @@ window.LessonManager = {
         // Module 5
         '5-1', '5-2', '5-3', '5-4', '5-5',
         // Module 6
-        '6-1', '6-2', '6-3', '6-4', '6-5'
+        '6-1', '6-2', '6-3', '6-4', '6-5',
+        // Module 7
+        '7-1', '7-2', '7-3'
     ],
 
     isUnlocked: function (lessonId) {
+        if (Progress.DEBUG_DISABLE_LOCKS) return true;
         if (!lessonId) return false;
 
         // La première leçon est toujours débloquée
@@ -92,6 +98,8 @@ window.LessonManager = {
         return null;
     }
 };
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Mobile Nav Toggle
@@ -114,6 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+
 
     // 2. Navbar Scroll Effect
     window.addEventListener('scroll', () => {
@@ -148,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Animation Typewriter pour le Code Hero
     const codeElement = document.getElementById('hero-code');
-    if (codeElement) {
+    if (codeElement && window.innerWidth >= 1000) {
         const codeText = `local player = game.Players.LocalPlayer
 local part = Instance.new("Part")
 

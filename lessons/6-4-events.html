@@ -4,137 +4,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Interactions et Événements UI dans Roblox - Apprenez à rendre vos boutons interactifs">
     <title>6.4 Interactions & Événements - LuaMaster</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/lesson.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body class="dark-mode">
-    <nav class="navbar">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo">
                 <div class="logo-icon"><i class="fas fa-code"></i></div>
                 <span class="logo-text">Lua<span class="accent">Master</span></span>
             </a>
-            <div class="lesson-nav">
-                <a href="../courses.html" class="nav-link"><i class="fas fa-th-large"></i> Cours</a>
-                <a href="6-3-layouts.html" class="nav-link"><i class="fas fa-arrow-left"></i> Précédent</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
             </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <main class="lesson-container">
-        <header class="lesson-header">
-            <div class="container">
-                <span class="lesson-badge">Module 6 • Leçon 6.4</span>
-                <h1>Interactions <span class="gradient-text">& Événements</span></h1>
-                <p>Donnez vie à vos interfaces en réagissant aux actions des joueurs.</p>
-                <div class="warning-box">
-                    <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                    <div class="warning-content">
-                        <h4>Roblox Studio Requis</h4>
-                        <p>Cette leçon utilise l'API de Roblox. Ce code ne fonctionnera <strong>que</strong> dans Roblox
-                            Studio ou notre éditeur intégré, et non sur un interpréteur Lua PC standard.</p>
+    <!-- Lesson Content -->
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <!-- Sidebar Navigation -->
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 6 : Design UI</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="6-1-gui-basics.html">
+                                <span class="lesson-num">6.1</span>
+                                <span>Bases du GUI</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-2-elements.html">
+                                <span class="lesson-num">6.2</span>
+                                <span>Éléments UI</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-3-layouts.html">
+                                <span class="lesson-num">6.3</span>
+                                <span>Z-Index & Layouts</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item active">
+                            <span class="lesson-num">6.4</span>
+                            <span>Interactions</span>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-5-tweens.html">
+                                <span class="lesson-num">6.5</span>
+                                <span>Animations UI</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-6">Module 6</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 6.4</span>
                     </div>
-                </div>
-            </div>
-        </header>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge intermediate">Intermédiaire</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 20 minutes</span>
+                    </div>
+                    <h1>Interactions & Événements</h1>
+                    <p class="lesson-intro">Donnez vie à vos interfaces en réagissant aux actions des joueurs.</p>
+                </header>
 
-        <section class="lesson-content">
-            <div class="container">
-                <!-- Concept 1: LocalScripts -->
-                <div class="content-card">
+                <section class="lesson-section">
                     <h2><i class="fas fa-user-lock"></i> La règle d'or : LocalScripts</h2>
-                    <p>Toute interaction avec l'UI doit être gérée par un <strong>LocalScript</strong>. Pourquoi ? Parce
-                        que l'interface appartient au joueur. Un script classique (Serveur) ne peut pas détecter les
-                        clics sur l'écran d'un joueur spécifique sans passer par des méthodes complexes.</p>
-                </div>
+                    <p>Toute interaction avec l'UI doit être gérée par un <strong>LocalScript</strong>. L'interface
+                        appartient au joueur. Un script classique (Serveur) ne peut pas détecter les clics sur l'écran
+                        d'un joueur spécifique.</p>
+                </section>
 
-                <!-- Concept 2: Mouse Events -->
-                <div class="content-card">
+                <section class="lesson-section">
                     <h2><i class="fas fa-mouse-pointer"></i> Événements de Souris</h2>
                     <p>Voici les trois événements les plus utilisés pour créer des boutons interactifs :</p>
-                    <div class="code-block-header">
-                        <span>LocalScript à l'intérieur d'un bouton</span>
-                        <button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button>
+                    <div class="code-block">
+                        <div class="code-header"><span>LocalScript</span></div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">button</span> = <span class="variable">script</span>.<span class="variable">Parent</span>
+
+<span class="comment">-- 1. Le Clic</span>
+<span class="variable">button</span>.<span class="variable">MouseButton1Click</span>:<span class="function">Connect</span>(<span class="keyword">function</span>()
+    <span class="function">print</span>(<span class="string">"Bouton cliqué !"</span>)
+<span class="keyword">end</span>)
+
+<span class="comment">-- 2. Survol (Enter/Leave)</span>
+<span class="variable">button</span>.<span class="variable">MouseEnter</span>:<span class="function">Connect</span>(<span class="keyword">function</span>()
+    <span class="variable">button</span>.<span class="variable">BackgroundColor3</span> = <span class="variable">Color3</span>.<span class="function">fromRGB</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">255</span>)
+<span class="keyword">end</span>)</code></pre>
                     </div>
-                    <pre><code>local button = script.Parent
+                </section>
 
--- 1. Le Clic
-button.MouseButton1Click:Connect(function()
-    print("Le bouton a été cliqué !")
-end)
-
--- 2. Entrée de la souris (Survol)
-button.MouseEnter:Connect(function()
-    button.BackgroundColor3 = Color3.fromRGB(100, 100, 255) -- Change couleur
-end)
-
--- 3. Sortie de la souris
-button.MouseLeave:Connect(function()
-    button.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- Remet couleur
-end)</code></pre>
-                </div>
-
-                <!-- Concept 3: Touch & Mobile -->
-                <div class="content-card">
+                <section class="lesson-section">
                     <h2><i class="fas fa-mobile-alt"></i> Mobile & Tactile</h2>
-                    <p>Bien que <code>MouseButton1Click</code> fonctionne aussi sur mobile (simulé), il est parfois
-                        préférable d'utiliser <code>Activated</code> qui est plus universel pour tous les types
-                        d'entrées.</p>
-                </div>
+                    <p>L'événement <code>Activated</code> est souvent préférable car il est plus universel pour tous les
+                        types d'entrées (souris, tactile, manette).</p>
+                </section>
 
-                <!-- Concept 4: Sound & Feedback -->
-                <div class="content-card premium-card">
+                <section class="lesson-section summary">
                     <h2><i class="fas fa-volume-up"></i> Feedback Utilisateur</h2>
-                    <p>Une bonne UI ne se contente pas d'être jolie, elle doit "répondre" :</p>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <i class="fas fa-music"></i>
-                            <h4>Sons</h4>
-                            <p>Jouez un petit "click.mp3" à chaque pression de bouton.</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-expand"></i>
-                            <h4>Animations flash</h4>
-                            <p>Agrandissez légèrement le bouton au survol (voir leçon suivante sur les Tweens).</p>
-                        </div>
+                    <p>Une bonne UI doit "répondre" visuellement et par des sons :</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> <strong>Sons :</strong> Jouez un son au clic.</li>
+                        <li><i class="fas fa-check"></i> <strong>Animations :</strong> Agrandissez le bouton au survol.
+                        </li>
+                        <li><i class="fas fa-check"></i> <strong>Couleurs :</strong> Changez la teinte pour indiquer
+                            l'interaction.</li>
+                    </ul>
+                </section>
+
+                <!-- Navigation -->
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="6-3-layouts.html">
+                            <i class="fas fa-arrow-left"></i> 6.3 Layouts Flexibles
+                        </a>
                     </div>
-                </div>
+                    <div class="nav-next">
+                        <a href="6-5-tweens.html">
+                            6.5 Animations UI <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </nav>
 
-                <!-- Quiz Widget -->
-                <div class="quiz-widget-anchor" id="lesson-quiz"></div>
-            </div>
-        </section>
-
-        <footer class="lesson-footer-nav">
-            <div class="container">
-                <div class="nav-controls">
-                    <a href="6-3-layouts.html" class="footer-nav-btn prev">
-                        <i class="fas fa-arrow-left"></i>
-                        <div class="btn-text">
-                            <span>Précédent</span>
-                            <strong>Layouts Flexibles</strong>
-                        </div>
-                    </a>
-                    <a href="#" class="footer-nav-btn next locked" id="next-lesson-btn">
-                        <div class="btn-text">
-                            <span>Suivant</span>
-                            <strong>Animations & Tweens</strong>
-                        </div>
-                        <i class="fas fa-lock"></i>
-                    </a>
+                <!-- Complete Button -->
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="6-4">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
                 </div>
-            </div>
-        </footer>
+            </article>
+        </div>
     </main>
 
+    <script src="../js/ai-assistant.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/lesson.js"></script>
 </body>

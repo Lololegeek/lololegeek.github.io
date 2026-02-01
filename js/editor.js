@@ -199,8 +199,51 @@ addPoints(100)
 print("\\n=== Leaderboard ===")
 for stat, valeur in pairs(leaderstats) do
     print(stat .. ": " .. valeur)
-end`
+end`,
+
+    discord: `-- 🤖 Simulation Bot Discord (Discordia)
+-- Apprends à créer un bot Discord en Lua !
+
+local discordia = require('discordia')
+local client = discordia.Client()
+
+print("🚀 Démarrage du bot simulation...")
+
+client:on('ready', function()
+    print("✅ Connecté en tant que BotTest#1234")
+end)
+
+client:on('messageCreate', function(message)
+    print("📩 Message reçu: " .. message.content)
+    
+    if message.content == '!ping' then
+        message:reply("Pong ! 🏓")
+    elseif message.content == '!hello' then
+        message:reply("Salut " .. message.author.username .. " ! 👋")
+    elseif message.content == '!info' then
+        message:reply("Je suis un bot Lua tournant sur LuaMaster !")
+    end
+end)
+
+-- Lancer le bot (simulation)
+client:run('MTIzNDU2Nzg5MDEyMzQ1Njc4OQ.ABCDEF.GHIJKL')
+
+-- Simuler des événements pour la démo
+print("\\n--- Simulation de l'activité Discord ---")
+client:emit('ready')
+client:emit('messageCreate', {
+    content = '!ping',
+    author = { username = "Lolo", id = "1" },
+    reply = function(self, text) print("🤖 Bot répond: " .. text) end
+})
+client:emit('messageCreate', {
+    content = '!hello',
+    author = { username = "Invité", id = "2" },
+    reply = function(self, text) print("🤖 Bot répond: " .. text) end
+})`
 };
+
+
 
 let editor; // Monaco editor instance
 let output;
@@ -211,7 +254,57 @@ document.addEventListener('DOMContentLoaded', () => {
     initMonaco();
     initExamples();
     initButtons();
+    checkExerciseURL();
 });
+
+function checkExerciseURL() {
+    const params = new URLSearchParams(window.location.search);
+    const lessonId = params.get('lesson');
+
+    if (lessonId && window.ExerciseData && window.ExerciseData[lessonId]) {
+        const ex = window.ExerciseData[lessonId];
+        const panel = document.getElementById('exercise-panel');
+        const title = document.getElementById('exercise-title');
+        const content = document.getElementById('exercise-instructions');
+
+        if (panel && title && content) {
+            panel.style.display = 'block';
+            panel.classList.add('premium-exercise-active');
+
+            title.innerHTML = `<i class="fas fa-tasks"></i> ${ex.title}`;
+
+            let tasksHtml = ex.tasks.map((t, i) => `
+                <div class="editor-task-item" id="task-${i}">
+                    <div class="task-checkbox"><i class="far fa-circle"></i></div>
+                    <div class="task-text">${t}</div>
+                </div>
+            `).join('');
+
+            content.innerHTML = `
+                <div class="exercise-intro">${ex.description}</div>
+                <div class="editor-task-list">
+                    ${tasksHtml}
+                </div>
+            `;
+
+            // Show back button
+            const backBtn = document.getElementById('back-to-lesson');
+            if (backBtn) {
+                backBtn.href = `lessons/${ex.backLink}`;
+                backBtn.style.display = 'inline-flex';
+                backBtn.className = 'btn btn-outline btn-sm back-to-lesson-btn';
+                backBtn.innerHTML = '<i class="fas fa-graduation-cap"></i> Retour au cours';
+            }
+
+            // Optionnel : charger le code par défaut si l'éditeur est prêt
+            setTimeout(() => {
+                if (editor) {
+                    editor.setValue(ex.defaultCode);
+                }
+            }, 500);
+        }
+    }
+}
 
 function initMonaco() {
     require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' } });
@@ -436,6 +529,41 @@ function runCode() {
                 math.round = function(x) return math.floor(x + 0.5) end
                 
                 print("✅ Environnement Roblox simulé chargé !")
+                
+                -- 6. Simulation Discordia (Bots Discord)
+                package = { loaded = {} }
+                function require(mod)
+                    if mod == 'discordia' then
+                        if not package.loaded['discordia'] then
+                            print("📦 Chargement de la librairie Discordia...")
+                            local Discordia = {}
+                            
+                            function Discordia.Client()
+                                local client = {
+                                    events = {},
+                                    on = function(self, event, cb)
+                                        self.events[event] = cb
+                                        print("👂 Bot écoute l'événement: " .. event)
+                                    end,
+                                    run = function(self, token)
+                                        print("🔑 Bot lancé avec le token: " .. string.sub(token, 1, 10) .. "...")
+                                    end,
+                                    emit = function(self, event, data)
+                                        if self.events[event] then
+                                            self.events[event](data)
+                                        end
+                                    end
+                                }
+                                return client
+                            end
+                            package.loaded['discordia'] = Discordia
+                        end
+                        return package.loaded['discordia']
+                    end
+                    error("Module '" .. mod .. "' non trouvé dans cette simulation")
+                end
+                
+                print("✅ Simulation Discordia chargée !")
             `;
 
             // Charger l'environnement simulé

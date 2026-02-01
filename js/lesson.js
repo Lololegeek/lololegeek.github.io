@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ou plus simplement : si la leçon courante n'est pas finie, la suivante est bloquée.
             const isCurrentFinished = Progress.get('lesson_' + lessonId);
 
-            if (!isCurrentFinished) {
+            if (!isCurrentFinished && !Progress.DEBUG_DISABLE_LOCKS) {
                 // Save the original href before locking
                 nextLink.dataset.originalHref = nextLink.href;
                 nextLink.classList.add('locked-link');
@@ -42,7 +42,57 @@ document.addEventListener('DOMContentLoaded', () => {
     initCompleteButton();
     loadCompletedLessons();
     initLessonQuizModal();
+    initExerciseButtons();
 });
+
+function initExerciseButtons() {
+    const lessonId = document.getElementById('complete-lesson')?.getAttribute('data-lesson');
+    if (!lessonId) return;
+
+    // Helper to ensure data is loaded
+    if (!window.ExerciseData) {
+        const script = document.createElement('script');
+        script.src = '../js/data/exercises.js';
+        script.onload = () => initExerciseButtons();
+        document.head.appendChild(script);
+        return;
+    }
+
+    const data = window.ExerciseData[lessonId];
+    if (!data) return;
+
+    const sections = document.querySelectorAll('.lesson-section, .info-box, .warning-box');
+
+    sections.forEach(section => {
+        const title = section.querySelector('h2, h3, h4');
+        if (title && title.textContent.toLowerCase().includes('exercice')) {
+            // Check if already processed
+            if (section.classList.contains('exercise-processed')) return;
+            section.classList.add('exercise-processed');
+
+            let tasksHtml = data.tasks.map(t => `<li><i class="fas fa-check-circle"></i> <span>${t}</span></li>`).join('');
+
+            section.innerHTML = `
+                <div class="exercise-header">
+                    <div class="exercise-badge"><i class="fas fa-play-circle"></i> Exercice</div>
+                    <h2>${data.title}</h2>
+                </div>
+                <p class="exercise-desc">${data.description}</p>
+                <ul class="exercise-task-list">
+                    ${tasksHtml}
+                </ul>
+                <div class="exercise-footer">
+                    <a href="../editor.html?lesson=${lessonId}" class="btn btn-primary exercise-launch-btn">
+                        <i class="fas fa-code"></i> Lancer dans l'Éditeur
+                        <div class="btn-shine"></div>
+                    </a>
+                </div>
+            `;
+
+            section.classList.add('premium-exercise-box');
+        }
+    });
+}
 
 // Lesson quiz data - specific questions for each lesson
 const lessonQuizzes = {
@@ -608,6 +658,69 @@ const lessonQuizzes = {
             {
                 question: 'Comment définit-on la durée d\'un deplacement ?',
                 answers: ['Via TweenInfo', 'Via Vector3', 'Via wait()', 'C\'est fixe (0.5s)'],
+                correct: 0
+            }
+        ],
+        requiredScore: 2
+    },
+    '7-1': {
+        title: 'Quiz - Intro à Discordia',
+        questions: [
+            {
+                question: 'Comment s\'appelle la librairie Lua la plus utilisée pour les bots Discord ?',
+                answers: ['Discord.js', 'Discordia', 'LuaBot', 'Disclua'],
+                correct: 1
+            },
+            {
+                question: 'Quelle méthode crée une nouvelle instance de bot ?',
+                answers: ['discordia.Bot()', 'discordia.Client()', 'Client.new()', 'discordia.create()'],
+                correct: 1
+            },
+            {
+                question: 'Quelle fonction est nécessaire pour lancer le bot avec son token ?',
+                answers: ['bot:start()', 'bot:connect()', 'bot:run()', 'bot:login()'],
+                correct: 2
+            }
+        ],
+        requiredScore: 2
+    },
+    '7-2': {
+        title: 'Quiz - Événements Discord',
+        questions: [
+            {
+                question: 'Quel événement se déclenche lorsqu\'un message est envoyé ?',
+                answers: ['onMessage', 'messageCreate', 'message', 'textReceived'],
+                correct: 2
+            },
+            {
+                question: 'Quelle méthode du message permet de répondre directement ?',
+                answers: ['message:answer()', 'message:reply()', 'message:send()', 'message:write()'],
+                correct: 1
+            },
+            {
+                question: 'Comment s\'appelle l\'objet qui représente l\'auteur d\'un message ?',
+                answers: ['User', 'Member', 'Author', 'Sender'],
+                correct: 2
+            }
+        ],
+        requiredScore: 2
+    },
+    '7-3': {
+        title: 'Quiz - Commandes Avancées',
+        questions: [
+            {
+                question: 'Comment extraire le premier mot d\'un message pour une commande ?',
+                answers: ['message.content:split(" ")[1]', 'string.sub(message.content, 1, 10)', 'message.word', 'message:getCommand()'],
+                correct: 0
+            },
+            {
+                question: 'À quoi sert le préfixe dans un bot Discord ?',
+                answers: ['À décorer les messages', 'À identifier les commandes pour le bot', 'À crypter les données', 'À se connecter à l\'API'],
+                correct: 1
+            },
+            {
+                question: 'Comment vérifier si un utilisateur a une permission spécifique ?',
+                answers: ['member:hasPermission(p)', 'member.permission == p', 'author.admin', 'roles:find(p)'],
                 correct: 0
             }
         ],
@@ -1347,10 +1460,10 @@ function continueAfterQuiz() {
     const btn = document.getElementById('complete-lesson');
     if (btn) {
         const lessonId = btn.getAttribute('data-lesson');
-        
+
         // Save lesson completion immediately
         Progress.set('lesson_' + lessonId, true);
-        
+
         // Update UI to completed state
         markAsCompleted(btn);
     }

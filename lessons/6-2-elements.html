@@ -4,151 +4,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Les Éléments Universels de l'UI Roblox - Apprenez à utiliser les Frames, TextLabels et plus">
     <title>6.2 Les Éléments Universels - LuaMaster</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/lesson.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body class="dark-mode">
-    <nav class="navbar">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo">
                 <div class="logo-icon"><i class="fas fa-code"></i></div>
                 <span class="logo-text">Lua<span class="accent">Master</span></span>
             </a>
-            <div class="lesson-nav">
-                <a href="../courses.html" class="nav-link"><i class="fas fa-th-large"></i> Cours</a>
-                <a href="6-1-gui-basics.html" class="nav-link"><i class="fas fa-arrow-left"></i> Précédent</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
             </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <main class="lesson-container">
-        <header class="lesson-header">
-            <div class="container">
-                <span class="lesson-badge">Module 6 • Leçon 6.2</span>
-                <h1>Les Éléments <span class="gradient-text">Universels</span></h1>
-                <p>Découvrez les briques fondamentales pour construire toutes vos interfaces Roblox.</p>
-                <div class="warning-box">
-                    <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                    <div class="warning-content">
-                        <h4>Roblox Studio Requis</h4>
-                        <p>Cette leçon utilise l'API de Roblox. Ce code ne fonctionnera <strong>que</strong> dans Roblox
-                            Studio ou notre éditeur intégré, et non sur un interpréteur Lua PC standard.</p>
-                    </div>
+    <!-- Lesson Content -->
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <!-- Sidebar Navigation -->
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
                 </div>
-            </div>
-        </header>
+                <div class="module-nav">
+                    <h3>Module 6 : Design UI</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="6-1-gui-basics.html">
+                                <span class="lesson-num">6.1</span>
+                                <span>Bases du GUI</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item active">
+                            <span class="lesson-num">6.2</span>
+                            <span>Éléments UI</span>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-3-layouts.html">
+                                <span class="lesson-num">6.3</span>
+                                <span>Z-Index & Layouts</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-4-events.html">
+                                <span class="lesson-num">6.4</span>
+                                <span>Interactions</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="6-5-tweens.html">
+                                <span class="lesson-num">6.5</span>
+                                <span>Animations UI</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
 
-        <section class="lesson-content">
-            <div class="container">
-                <!-- Concept 1: Frame -->
-                <div class="content-card">
+            <!-- Main Content -->
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <div class="lesson-breadcrumb">
+                        <a href="../courses.html">Cours</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../courses.html#module-6">Module 6</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Leçon 6.2</span>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="lesson-badge intermediate">Intermédiaire</span>
+                        <span class="lesson-time"><i class="fas fa-clock"></i> 20 minutes</span>
+                    </div>
+                    <h1>Les Éléments Universels</h1>
+                    <p class="lesson-intro">Découvrez les briques fondamentales pour construire toutes vos interfaces
+                        Roblox.</p>
+                </header>
+
+                <section class="lesson-section">
                     <h2><i class="fas fa-square-full"></i> La Frame (Le Conteneur)</h2>
                     <p>La <strong>Frame</strong> est l'élément de base. Elle ne fait "rien" par elle-même, mais elle
                         sert de conteneur pour organiser les autres éléments.</p>
-                    <div class="highlight-box">
-                        <p><strong>Propriétés clés :</strong></p>
-                        <ul>
-                            <li><strong>BackgroundColor3 :</strong> La couleur du fond.</li>
-                            <li><strong>BackgroundTransparency :</strong> 0 (opaque) à 1 (invisible).</li>
-                            <li><strong>BorderSizePixel :</strong> Épaisseur de la bordure (souvent mise à 0 pour un
-                                style moderne).</li>
-                        </ul>
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fas fa-sliders-h"></i></div>
+                        <div class="info-content">
+                            <h4>Propriétés clés :</h4>
+                            <ul>
+                                <li><strong>BackgroundColor3 :</strong> La couleur du fond.</li>
+                                <li><strong>BackgroundTransparency :</strong> 0 (opaque) à 1 (invisible).</li>
+                                <li><strong>BorderSizePixel :</strong> Épaisseur de la bordure (souvent mise à 0).</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                <!-- Concept 2: Text Elements -->
-                <div class="content-card">
+                <section class="lesson-section">
                     <h2><i class="fas fa-font"></i> Éléments de Texte</h2>
-                    <div class="dual-column">
-                        <div class="column">
-                            <h3>TextLabel</h3>
+                    <div class="cards-grid">
+                        <div class="mini-card">
+                            <h4>TextLabel</h4>
                             <p>Utilisé pour afficher du texte fixe (ex: titres, labels de score).</p>
                         </div>
-                        <div class="column">
-                            <h3>TextButton</h3>
+                        <div class="mini-card">
+                            <h4>TextButton</h4>
                             <p>Un bouton avec du texte qui peut être cliqué par l'utilisateur.</p>
                         </div>
                     </div>
-                    <div class="pro-tip">
+                    <div class="tip-box">
                         <i class="fas fa-check-circle"></i>
                         <p><strong>TextScaled :</strong> Cochez cette option pour que le texte s'adapte automatiquement
                             à la taille de la boîte !</p>
                     </div>
-                </div>
+                </section>
 
-                <!-- Concept 3: Image Elements -->
-                <div class="content-card">
+                <section class="lesson-section">
                     <h2><i class="fas fa-image"></i> Éléments d'Image</h2>
-                    <p>Pour ajouter des icônes, des logos ou des textures de fond, on utilise :</p>
-                    <ul>
-                        <li><strong>ImageLabel :</strong> Simple affichage d'image.</li>
-                        <li><strong>ImageButton :</strong> Une image cliquable (ex: une icône "Fermer").</li>
+                    <p>Pour ajouter des icônes ou des textures, on utilise :</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> <strong>ImageLabel :</strong> Simple affichage d'image.</li>
+                        <li><i class="fas fa-check"></i> <strong>ImageButton :</strong> Une image cliquable (ex: icône
+                            "Fermer").</li>
                     </ul>
-                    <div class="code-block-header">
-                        <span>Exemple : Changer une image par script</span>
+                    <div class="code-block">
+                        <div class="code-header"><span>script.lua</span></div>
+                        <pre><code><span class="keyword">local</span> <span class="variable">logo</span> = <span class="variable">script</span>.<span class="variable">Parent</span>.<span class="variable">Logo</span>
+<span class="variable">logo</span>.<span class="variable">Image</span> = <span class="string">"rbxassetid://123456789"</span></code></pre>
                     </div>
-                    <pre><code>local logo = script.Parent.Logo
-logo.Image = "rbxassetid://123456789" -- ID de l'image sur Roblox</code></pre>
-                </div>
+                </section>
 
-                <!-- Concept 4: UICorner & UIGradient -->
-                <div class="content-card premium-card">
-                    <h2><i class="fas fa-magic"></i> Moderniser l'UI (UICorner & UIGradient)</h2>
-                    <p>Roblox propose des objets "modificateurs" à placer *à l'intérieur* de vos Frames ou Boutons :</p>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <i class="fas fa-circle-notch"></i>
-                            <h4>UICorner</h4>
-                            <p>Arrondit les bords de n'importe quel élément UI.</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-palette"></i>
-                            <h4>UIGradient</h4>
-                            <p>Ajoute des dégradés de couleurs dynamiques.</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-clone"></i>
-                            <h4>UIStroke</h4>
-                            <p>Ajoute des bordures précises ou des contours au texte.</p>
-                        </div>
+                <section class="lesson-section summary">
+                    <h2><i class="fas fa-magic"></i> Moderniser l'UI</h2>
+                    <p>Ajoutez ces objets à l'intérieur de vos éléments pour un look premium :</p>
+                    <ul>
+                        <li><strong>UICorner :</strong> Arrondit les coins.</li>
+                        <li><strong>UIGradient :</strong> Ajoute des dégradés.</li>
+                        <li><strong>UIStroke :</strong> Ajoute des contours.</li>
+                    </ul>
+                </section>
+
+                <!-- Navigation -->
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="6-1-gui-basics.html">
+                            <i class="fas fa-arrow-left"></i> 6.1 Bases du GUI
+                        </a>
                     </div>
-                </div>
+                    <div class="nav-next">
+                        <a href="6-3-layouts.html">
+                            6.3 Layouts Flexibles <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </nav>
 
-                <!-- Quiz Widget -->
-                <div class="quiz-widget-anchor" id="lesson-quiz"></div>
-            </div>
-        </section>
-
-        <footer class="lesson-footer-nav">
-            <div class="container">
-                <div class="nav-controls">
-                    <a href="6-1-gui-basics.html" class="footer-nav-btn prev">
-                        <i class="fas fa-arrow-left"></i>
-                        <div class="btn-text">
-                            <span>Précédent</span>
-                            <strong>Bases des GUIs</strong>
-                        </div>
-                    </a>
-                    <a href="#" class="footer-nav-btn next locked" id="next-lesson-btn">
-                        <div class="btn-text">
-                            <span>Suivant</span>
-                            <strong>Layouts Flexibles</strong>
-                        </div>
-                        <i class="fas fa-lock"></i>
-                    </a>
+                <!-- Complete Button -->
+                <div class="lesson-complete">
+                    <button class="btn btn-primary btn-lg complete-btn" id="complete-lesson" data-lesson="6-2">
+                        <i class="fas fa-check-circle"></i>
+                        Marquer comme terminé
+                    </button>
                 </div>
-            </div>
-        </footer>
+            </article>
+        </div>
     </main>
 
+    <script src="../js/ai-assistant.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/lesson.js"></script>
 </body>

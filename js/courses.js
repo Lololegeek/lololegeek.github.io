@@ -22,7 +22,9 @@ const lessonOrder = window.LessonManager ? window.LessonManager.order : [
     '2-1', '2-2', '2-3', '2-4', '2-5',
     '3-1', '3-2', '3-3',
     '4-1', '4-2', '4-3',
-    '5-1', '5-2', '5-3', '5-4', '5-5'
+    '5-1', '5-2', '5-3', '5-4', '5-5',
+    '6-1', '6-2', '6-3', '6-4', '6-5',
+    '7-1', '7-2', '7-3'
 ];
 
 function updateLessonStates() {
@@ -71,6 +73,7 @@ function updateLessonStates() {
 }
 
 function isLessonUnlocked(lessonId) {
+    if (Progress.DEBUG_DISABLE_LOCKS) return true;
     const lessonIndex = lessonOrder.indexOf(lessonId);
 
     // First lesson is always unlocked
@@ -147,7 +150,9 @@ function updateModuleProgress() {
         'module-2': ['2-1', '2-2', '2-3', '2-4', '2-5'],
         'module-3': ['3-1', '3-2', '3-3'],
         'module-4': ['4-1', '4-2', '4-3'],
-        'module-5': ['5-1', '5-2', '5-3', '5-4', '5-5']
+        'module-5': ['5-1', '5-2', '5-3', '5-4', '5-5'],
+        'module-6': ['6-1', '6-2', '6-3', '6-4', '6-5'],
+        'module-7': ['7-1', '7-2', '7-3']
     };
 
     Object.keys(modules).forEach(moduleId => {

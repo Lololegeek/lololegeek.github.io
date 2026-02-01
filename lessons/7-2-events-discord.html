@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leçon à venir sur LuaMaster - Événements Discord">
+    <title>7.2 Événements Discord - LuaMaster</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .coming-soon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 50vh;
+            padding: 40px;
+            background: rgba(30, 30, 35, 0.5);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 40px 0;
+        }
+
+        .coming-soon-icon {
+            font-size: 80px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(74, 144, 226, 0.1);
+            color: var(--accent-color);
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .coming-soon-title {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .coming-soon-text {
+            color: var(--text-muted);
+            max-width: 500px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .next-steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .step-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .step-card i {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+        }
+
+        .step-card h4 {
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .step-card p {
+            font-size: 0.85em;
+            color: var(--text-muted);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .next-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span class="logo-text">Lua<span class="accent">Master</span></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                <li><a href="../courses.html" class="nav-link active">Cours</a></li>
+                <li><a href="../editor.html" class="nav-link">Éditeur</a></li>
+                <li><a href="../quiz.html" class="nav-link">Quiz</a></li>
+                <li><a href="../roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Lesson Content -->
+    <main class="lesson-page">
+        <div class="lesson-container">
+            <!-- Sidebar Navigation -->
+            <aside class="lesson-sidebar">
+                <div class="sidebar-header">
+                    <a href="../courses.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour aux cours
+                    </a>
+                </div>
+                <div class="module-nav">
+                    <h3>Module 7 : Bots Discord</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="7-1-discord-intro.html">
+                                <span class="lesson-num">7.1</span>
+                                <span>Intro à Discordia</span>
+                            </a>
+                        </li>
+                        <li class="lesson-item active">
+                            <span class="lesson-num">7.2</span>
+                            <span>Événements Discord</span>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="7-3-commands-discord.html">
+                                <span class="lesson-num">7.3</span>
+                                <span>Commandes Avancées</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <article class="lesson-content">
+                <div class="coming-soon-container">
+                    <div class="coming-soon-badge">En préparation</div>
+                    <div class="coming-soon-icon"><i class="fas fa-rocket"></i></div>
+                    <h1 class="coming-soon-title">Événements Discord</h1>
+                    <p class="coming-soon-text">
+                        Nous travaillons activement sur cette leçon pour vous offrir le meilleur contenu possible.
+                        Vous y apprendrez à gérer les réactions, les suppressions de messages et les arrivées de
+                        nouveaux membres !
+                    </p>
+
+                    <div class="next-steps">
+                        <a href="7-1-discord-intro.html" class="step-card">
+                            <i class="fas fa-arrow-left"></i>
+                            <h4>Revoir la leçon 7.1</h4>
+                            <p>Assurez-vous de bien maîtriser les bases de Discordia avant la suite.</p>
+                        </a>
+                        <a href="../editor.html" class="step-card">
+                            <i class="fas fa-terminal"></i>
+                            <h4>Pratiquer dans l'éditeur</h4>
+                            <p>Testez vos propres idées de bots dans notre simulateur intégré.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="lesson-nav">
+                    <div class="nav-prev">
+                        <a href="7-1-discord-intro.html">
+                            <i class="fas fa-arrow-left"></i> 7.1 Introduction
+                        </a>
+                    </div>
+                    <div class="nav-next disabled">
+                        <span>Leçon suivante</span>
+                    </div>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <script src="../js/ai-assistant.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/lesson.js"></script>
+</body>
+
+</html>
