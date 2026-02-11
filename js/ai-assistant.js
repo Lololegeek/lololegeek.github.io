@@ -611,7 +611,14 @@ async function sendMessage() {
             })
         });
 
-        if (!response.ok) throw new Error("Erreur API: " + response.status);
+        if (!response.ok) {
+            if (response.status === 401) {
+                loadingMsg.remove();
+                addMsg("❌ Erreur 401 : Clé API invalide. Essaye de réinitialiser la clé via le bouton en bas ou entre une nouvelle clé valide.", 'system');
+                return;
+            }
+            throw new Error("Erreur API: " + response.status);
+        }
 
         const data = await response.json();
         const reply = data.choices[0].message.content;
@@ -620,8 +627,8 @@ async function sendMessage() {
         addMsg(reply, 'bot');
 
     } catch (error) {
-        loadingMsg.remove();
-        addMsg("Erreur de connexion à Groq. Vérifie ta clé ou ta connexion.", 'system');
+        if (loadingMsg) loadingMsg.remove();
+        addMsg("Erreur de connexion à Groq. Vérifie ta clé ou ta connexion. Détails: " + error.message, 'system');
         console.error(error);
     }
 }
