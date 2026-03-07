@@ -2,7 +2,7 @@ const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
 const MODEL = "llama-3.3-70b-versatile";
 
 // Clé API Groq par défaut (pour les utilisateurs autorisés)
-const DEFAULT_GROQ_API_KEY = "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";
+const DEFAULT_GROQ_API_KEY = "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";
 
 console.log("🤖 AI Assistant script loaded");
 
