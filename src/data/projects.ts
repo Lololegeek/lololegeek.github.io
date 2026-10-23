@@ -416,5 +416,3 @@ export const groups = ["Desktop apps", "Games", "Minecraft", "Web apps", "Tools 
 
 export const byId = Object.fromEntries(projects.map((p) => [p.id, p])) as Record<string, Project>;
 
-/** Projects with a real capture, in the order the hero reel shows them. */
-export const reel = ["server-tycoon", "clipforge", "nexolume", "copieca", "valoria", "valombre", "lolomc-gui", "lcut"].map((id) => byId[id]);

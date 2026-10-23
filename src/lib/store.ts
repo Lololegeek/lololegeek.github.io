@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export type StageMode = "reel" | "project" | "languages";
+export type StageMode = "intro" | "project" | "languages";
 
 type State = {
   mode: StageMode;
@@ -13,7 +13,7 @@ type State = {
 };
 
 export const useSite = create<State>((set) => ({
-  mode: "reel",
+  mode: "intro",
   projectId: null,
   openId: null,
   paletteOpen: false,

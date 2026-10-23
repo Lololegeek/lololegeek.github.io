@@ -1,8 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
-import { byId, reel, type Project } from "@/data/projects";
+import { byId, type Project } from "@/data/projects";
 import { useSite } from "@/lib/store";
 import { fmt } from "@/lib/stats";
 import { LanguageChart } from "./LanguageChart";
@@ -11,26 +10,9 @@ import { LanguageChart } from "./LanguageChart";
 export function Stage() {
   const { mode, projectId } = useSite();
   const reduce = useReducedMotion();
-  const [tick, setTick] = useState(0);
 
-  useEffect(() => {
-    if (mode !== "reel" || reduce) return;
-    let id: ReturnType<typeof setInterval> | undefined;
-    const start = () => (id = setInterval(() => setTick((t) => t + 1), 5200));
-    const stop = () => id && clearInterval(id);
-    const onVis = () => (document.hidden ? stop() : start());
-    start();
-    document.addEventListener("visibilitychange", onVis);
-    return () => {
-      stop();
-      document.removeEventListener("visibilitychange", onVis);
-    };
-  }, [mode, reduce]);
-
-  const project: Project | null =
-    mode === "reel" ? reel[tick % reel.length] : mode === "project" && projectId ? byId[projectId] : null;
-  const key = mode === "languages" ? "languages" : project?.id ?? "none";
-  const slow = mode === "reel";
+  const project: Project | null = mode === "project" && projectId ? byId[projectId] : null;
+  const key = mode === "languages" ? "languages" : project?.id ?? "intro";
 
   return (
     <div className="relative h-full overflow-hidden rounded-[var(--radius)] bg-field text-field-ink">
@@ -41,11 +23,23 @@ export function Stage() {
           initial={{ opacity: 0, scale: 1.015 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: reduce ? 0 : slow ? 1.6 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: reduce ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
-          {mode === "languages" ? <LanguageChart /> : project ? <Window project={project} /> : null}
+          {mode === "languages" ? <LanguageChart /> : project ? <Window project={project} /> : <Intro />}
         </motion.div>
       </AnimatePresence>
+    </div>
+  );
+}
+
+/** Before the reader reaches a project there is no picture yet, only the name. */
+function Intro() {
+  return (
+    <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
+      <h3 className="max-w-[12ch] text-[clamp(44px,5.2vw,88px)]">lololegeek</h3>
+      <p className="mt-6 max-w-[40ch] text-[17px] leading-[1.5] text-field-soft">
+        Projects, stats and stacks. Scroll to open each one.
+      </p>
     </div>
   );
 }
