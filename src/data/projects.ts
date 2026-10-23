@@ -408,18 +408,6 @@ const raw: z.input<typeof Project>[] = [
     lines: 2682,
     repo: gh("LoloServer"),
   },
-  {
-    id: "lfsbot",
-    name: "LFSBot",
-    kind: "Discord community bot",
-    group: "Tools and systems",
-    year: 2026,
-    stack: ["JavaScript", "discord.js", "Groq", "Google Sheets API"],
-    blurb: "Slash commands for a Discord community: scheduled broadcasts, polls, embeds, a member sign-up that writes to Google Sheets, and /ask on Llama 3.3 70B.",
-    lines: 2067,
-    commits: 9,
-    privateRepo: true,
-  },
 ];
 
 export const projects: Project[] = raw.map((p) => Project.parse(p));

@@ -30,7 +30,6 @@ const bars: { name: string; rows: Row[] }[] = [
       ["Express", used("express")],
       ["Next.js", used("next")],
       ["VS Code API", "Live Server Speed Edition"],
-      ["discord.js", "LFSBot"],
     ],
   },
   {
