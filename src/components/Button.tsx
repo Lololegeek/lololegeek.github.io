@@ -7,7 +7,7 @@ const button = cva(
   {
     variants: {
       tone: {
-        primary: "btn-primary bg-accent text-accent-ink hover:bg-[oklch(0.38_0.07_167)]",
+        primary: "btn-primary bg-accent text-accent-ink hover:bg-accent-hover",
         plain: "bg-ink text-paper hover:bg-soft",
       },
       size: {

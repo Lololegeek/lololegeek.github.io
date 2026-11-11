@@ -104,7 +104,7 @@ export function ProjectDialog() {
                       href={p.repo}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex h-12 items-center gap-2 bg-accent px-6 text-[15px] font-semibold text-accent-ink hover:bg-[oklch(0.38_0.07_167)]"
+                      className="inline-flex h-12 items-center gap-2 bg-accent px-6 text-[15px] font-semibold text-accent-ink hover:bg-accent-hover"
                     >
                       Source on GitHub <ArrowUpRight size={17} aria-hidden />
                     </a>

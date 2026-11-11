@@ -3,19 +3,21 @@
 @theme {
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
 
-  /* Studio grey */
-  --color-ground: oklch(0.731 0.002 286);
-  --color-surface: oklch(0.768 0.002 286);
-  --color-paper: oklch(0.83 0.002 286);
-  --color-field-light: oklch(0.874 0.002 286);
-  --color-ink: oklch(0.161 0 0);
-  --color-soft: oklch(0.348 0.004 286);
-  --color-accent: oklch(0.43 0.07 167);
-  --color-accent-ink: oklch(1 0 0);
-  --color-field: oklch(0.217 0.001 286);
-  --color-field-ink: oklch(1 0 0);
-  --color-field-soft: oklch(0.78 0.002 286);
-  --color-steel: oklch(0.66 0.035 232);
+  /* Lololegeek: ink, paper, phosphor amber */
+  --color-ground: #E6E1D5;
+  --color-surface: #EDE9DF;
+  --color-paper: #F5F2EA;
+  --color-field-light: #FBF9F4;
+  --color-ink: #111317;
+  --color-soft: #4B4E55;
+  --color-accent: #FFB224;
+  --color-accent-ink: #111317;
+  --color-accent-hover: #F09E00;
+  --color-amber-deep: #B86E00;
+  --color-field: #111317;
+  --color-field-ink: #F5F2EA;
+  --color-field-soft: #A9A59B;
+  --color-steel: #FFB224;
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -66,7 +68,7 @@ p { text-wrap: pretty; }
 
 .tnum { font-variant-numeric: tabular-nums; }
 
-::selection { background: var(--color-ink); color: var(--color-paper); }
+::selection { background: var(--color-accent); color: var(--color-ink); }
 
 :focus-visible {
   outline: 2px solid var(--color-ink);

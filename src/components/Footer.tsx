@@ -61,7 +61,8 @@ export function Footer() {
             </button>
             <div className="flex flex-wrap items-end justify-between gap-4 text-[13px] text-field-soft">
               <p>© 2026 Lololegeek. Set in Archivo. Built with Next.js.</p>
-              <p className="text-[22px] leading-none font-semibold tracking-[-0.02em] text-field-ink">lololegeek</p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/lololegeek-lockup-on-dark.svg" width={1074} height={256} alt="Lololegeek" className="h-8 w-auto" />
             </div>
           </div>
         </div>

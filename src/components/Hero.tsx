@@ -38,8 +38,9 @@ export function Hero() {
       <Ribbon labelled className="h-10 md:h-14" />
 
       <div className="flex flex-1 flex-col px-6 pt-8 pb-7 md:px-12 md:pt-12">
-        <p data-rise className="text-[26px] leading-none font-semibold tracking-[-0.02em] md:text-[34px]">
-          lololegeek
+        <p data-rise>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/lololegeek-lockup.svg" width={1074} height={256} alt="Lololegeek" className="h-9 w-auto md:h-11" />
         </p>
 
         <div className="mt-auto pt-16 md:pt-24">

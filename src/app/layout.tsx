@@ -10,12 +10,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lololegeek",
     description: "Desktop apps, games and the tools between.",
-    images: ["/shots/tycoon-ops.webp"],
+    images: [{ url: "/brand/social-preview.png", width: 1280, height: 640 }],
   },
-  icons: { icon: "/icon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
-export const viewport: Viewport = { themeColor: "#a8a8aa" };
+export const viewport: Viewport = { themeColor: "#111317" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -23,7 +23,7 @@ function Bars({ reduce }: { reduce: boolean }) {
 
   useLayoutEffect(() => {
     cells.forEach((c, i) => {
-      color.set(c.on ? "#e9e9ea" : "#4a4a4c");
+      color.set(c.on ? "#FFB224" : "#2A2E36");
       mesh.current!.setColorAt(i, color);
     });
     mesh.current!.instanceColor!.needsUpdate = true;
@@ -58,7 +58,7 @@ function Bars({ reduce }: { reduce: boolean }) {
 export default function Skyline({ active, reduce }: { active: boolean; reduce: boolean }) {
   return (
     <Canvas frameloop={active ? "always" : "never"} dpr={[1, 2]} gl={{ antialias: true }} aria-hidden>
-      <color attach="background" args={["#1b1b1c"]} />
+      <color attach="background" args={["#111317"]} />
       <OrthographicCamera makeDefault position={[40, 34, 40]} zoom={11} onUpdate={(c) => c.lookAt(0, 2, 0)} />
       <ambientLight intensity={0.75} />
       <directionalLight position={[20, 40, 10]} intensity={1.6} />
