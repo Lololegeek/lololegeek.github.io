@@ -12,7 +12,6 @@ const extra = [
   { src: "/shots/valombre-maps.webp", w: 752, h: 696, alt: "Valombre region maps", id: "valombre", caption: "Valombre, region maps" },
   { src: "/shots/valoria-jobs.webp", w: 1600, h: 900, alt: "Valoria jobs screen with the miner level and rewards", id: "valoria", caption: "Valoria RP, jobs and levels" },
   { src: "/shots/nexolume-site.webp", w: 1440, h: 900, alt: "The Nexolume website home page", id: "nexolume", caption: "Nexolume, its website" },
-  { src: "/shots/copieca-mascot.webp", w: 740, h: 720, alt: "COPIE ÇA! menu mascot", id: "copieca", caption: "COPIE ÇA!, the menu" },
 ];
 
 const slides = [

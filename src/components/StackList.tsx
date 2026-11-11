@@ -38,8 +38,6 @@ const bars: { name: string; rows: Row[] }[] = [
       ["C#", `${fmt(lines("C#"))} lines`],
       ["Avalonia", "Nexolume"],
       ["WinUI 3", "ProjectHub, NovaExplorer"],
-      ["WPF", "LoloProductivity, Gogol Mager"],
-      ["Chromium Embedded", "Gogol Mager"],
       [".NET 10", "Nexolume, NovaExplorer"],
     ],
   },
@@ -51,7 +49,7 @@ const bars: { name: string; rows: Row[] }[] = [
       ["Qt Quick and QML", "ClipForge, LCut"],
       ["libobs and FFmpeg", "ClipForge"],
       ["MLT", "LCut"],
-      ["raylib", "Valombre, GF2D"],
+      ["raylib", "Valombre"],
       ["PS3 homebrew", "GreenVita PS3"],
     ],
   },
@@ -59,25 +57,14 @@ const bars: { name: string; rows: Row[] }[] = [
     name: "Rust",
     rows: [
       ["Rust", `${fmt(lines("Rust"))} lines`],
-      ["Tauri", "Basic Pitch Live, LoloRGB"],
       ["Document engines", "Nexolume, the larger half of it"],
-      ["Game server", "COPIE ÇA!"],
     ],
   },
   {
-    name: "Swift",
-    rows: [
-      ["Swift", `${fmt(lines("Swift"))} lines`],
-      ["SwiftUI on Windows", "WinSwiftUI"],
-    ],
-  },
-  {
-    name: "Python and models",
+    name: "Python",
     rows: [
       ["Python", `${fmt(lines("Python"))} lines`],
-      ["PyTorch", "MyAI"],
-      ["TripoSR and FastAPI", "LoloModelsAI"],
-      ["Services", "LoloServer, LoloProductivity licences"],
+      ["Services", "LoloServer"],
     ],
   },
   {
@@ -85,7 +72,7 @@ const bars: { name: string; rows: Row[] }[] = [
     rows: [
       ["GDScript", `${fmt(lines("GDScript"))} lines`],
       ["Java", `${fmt(lines("Java"))} lines`],
-      ["Godot 4", "Server Tycoon, COPIE ÇA!"],
+      ["Godot 4", "Server Tycoon"],
       ["Fabric 1.21.1", "UMCE, LoloMC GUI"],
       ["Fabric 1.20.1", "Valoria RP"],
     ],
